@@ -1,4 +1,37 @@
 <resources>
     <string name="app_name">Zickreee</string>
     <string name="arrow_content_desc">Arrow</string>
+    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="bug_report_title">Сообщить об ошибке</string>
+    <string name="rate_the_app_title">Оценить приложение</string>
+    <string name="rate_the_app_subtitle">Оценить приложение в RuStore</string>
+    <string name="bug_report_subtitle">Пожалуйста, опишите проблему и отправьте её нам</string>
+    <string name="welcome_screen_title">Добро пожаловать в \"Заметки\"! 🏛✨\n\n</string>
+    <string name="privacy_policy_message">Продолжая, вы принимаете наши Условия обслуживания и подтверждаете, что ознакомились с нашей Политикой конфиденциальности.</string>
+    <string name="welcome_screen_message">Вдохновляйтесь, проектируйте и фиксируйте каждую идею в одном месте. Здесь ваши мысли обретут форму, а заметки станут фундаментом для новых достижений.\n\n🖊️ Записывайте важное!\n📐 Структурируйте идеи!\n🎨 Воплощайте замыслы!</string>
+
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Профиль Github</string>
+    <string name="github_url" translatable="false">https://github.com/Raf0707/</string>
+
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Наше сообщество в VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/mahabbaa</string>
+
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Telegram-канал</string>
+    <string name="telegram_url" translatable="false">https://t.me/ibnRustum</string>
+
+    <string name="other_apps_title">Другие приложения</string>
+    <string name="other_apps_subtitle">Наши другие приложения</string>
+    <string name="other_apps_url" translatable="false">https://apps.rustore.ru/developer/ZPBnoCoBczpBFPZK0munW8NSpRTEayCj</string>
+    <string name="license">Лицензия</string>
+    <string name="gnu_gpl_3_0">GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</string>
+    <string name="privacy_policy_message_1">Политика конфиденциальности и условия обслуживания</string>
+    <string name="web">WEB-приложение</string>
+    <string name="web_mes">Наше приложение доступно в веб-версии</string>
+    <string name="shareapp">Поделиться приложением</string>
+    <string name="shareapp_mes">Поделитесь нашим приложением с друзьями. Указавшему на благое полагается такая же награда как и совершившему его</string>
+    <string name="settings">Настройки</string>
 </resources>

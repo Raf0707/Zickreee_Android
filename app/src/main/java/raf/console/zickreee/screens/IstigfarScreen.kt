@@ -23,8 +23,8 @@ import raf.console.zickreee.components.Position
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
-fun DuaQuranScreen(context: Context) {
-    val duas = remember { loadDuasFromAssets(context, "dua_from_quran.json") }
+fun IstigfarScreen(context: Context) {
+    val duas = remember { loadDuasFromAssets(context, "istigfar.json") }
 
     LazyColumn (
         modifier = Modifier
@@ -34,7 +34,7 @@ fun DuaQuranScreen(context: Context) {
         // Заголовок с отступом сверху и выравниванием по центру
         item {
             Text(
-                text = "Дуа из Корана",
+                text = "Истигфар - мольба о прощении",
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary,

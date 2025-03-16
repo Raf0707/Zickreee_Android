@@ -1,6 +1,7 @@
 package raf.console.zickreee.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,7 +19,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun StaticItem(
     title: String,
-    position: Position
+    position: Position,
+    onClick: () -> Unit
 ) {
     val extraLargeShape = MaterialTheme.shapes.extraLarge
     val shape = remember(position) {
@@ -41,13 +43,14 @@ fun StaticItem(
             .fillMaxWidth()
             .clip(shape)
             .background(MaterialTheme.colorScheme.surfaceContainerLow)
+            .clickable(onClick = onClick) // Обработчик нажатия
             .padding(16.dp)
     ) {
         Text(
             text = title,
             color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleLarge.copy(
-                textAlign = TextAlign.Center // Выравнивание по центру
+                textAlign = TextAlign.Center
             ),
             modifier = Modifier.fillMaxWidth()
         )

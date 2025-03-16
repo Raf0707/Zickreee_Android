@@ -8,21 +8,23 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.components.StaticItem
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     val items = listOf(
-        "99 имен Аллаха",
-        "Дуа из Корана",
-        "Салаваты",
-        "Истигфары",
-        "Дуа для богатства",
-        "Утренние и вечерние азкары",
-        "Дуа исмуль А'зам",
-        "72 дуа Пророка Мухаммада Салля Ллаху алейхи уа Саллям",
-        "О приложении"
+        "99 имен Аллаха" to "namesOfAllah",
+        "Дуа из Корана" to "duaFromQuran",
+        "Салаваты" to "salawat",
+        "Истигфары" to "istighfar",
+        "Дуа для богатства" to "duaForReachness",
+        "Утренние и вечерние азкары" to "morningEveningAzkar",
+        "Дуа исмуль А'зам" to "ismulAzam",
+        "72 дуа Пророка Мухаммада Салля Ллаху алейхи уа Саллям" to "duaRasul",
+        "Настройки" to "settings",
+        "О приложении" to "aboutApp"
     )
 
     LazyColumn(
@@ -31,15 +33,20 @@ fun HomeScreen() {
             .padding(horizontal = 16.dp, vertical = 64.dp)
     ) {
         items(items.size) { index ->
+            val (title, route) = items[index]
             StaticItem(
-                title = items[index],
+                title = title,
                 position = when (index) {
                     0 -> Position.TOP
                     items.size - 1 -> Position.BOTTOM
                     else -> Position.CENTER
+                },
+                onClick = {
+                    navController.navigate(route) // Навигация на соответствующий экран
                 }
             )
             Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
         }
     }
 }
+
