@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -37,6 +39,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import raf.console.archnotes.utils.ChromeCustomTabUtil
 import raf.console.archnotes.utils.FeedbackHelper
 import raf.console.zickreee.R
@@ -45,6 +48,7 @@ import raf.console.zickreee.R
 @Composable
 fun AboutScreen(
     //modifier: Modifier = Modifier
+    navController: NavController
 ) {
     val context = LocalContext.current
     LazyColumn (
@@ -68,6 +72,18 @@ fun AboutScreen(
                     )
                     Text(text = stringResource(R.string.app_name))
                     Text(text = "from R&R")
+
+                    ListItem(
+                        title = stringResource(R.string.back),
+                        subtitle = stringResource(R.string.back_msg),
+                        icon = painterResource(id = R.drawable.baseline_home_24),
+                        onClick = {
+
+                            navController.navigate("home") // Переход на главный экран
+
+                        }
+                    )
+                    HorizontalDivider(Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp))
 
                     ListItem(
                         title = stringResource(R.string.license),
@@ -135,7 +151,7 @@ fun AboutScreen(
                         onClick = {
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
-                                url = "https://apps.rustore.ru/developer/ZPBnoCoBczpBFPZK0munW8NSpRTEayCj",
+                                url = "https://www.rustore.ru/catalog/developer/90b1826e",
                             )
                         }
                     )
@@ -411,13 +427,4 @@ fun ListItem(
             )
         }
     }
-}
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-)
-@Composable
-fun AboutScreenPreview() {
-    AboutScreen()
 }

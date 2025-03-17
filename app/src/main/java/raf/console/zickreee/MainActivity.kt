@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import raf.console.zickreee.screens.AboutScreen
+import raf.console.zickreee.screens.AfterNamazScreen
 import raf.console.zickreee.screens.DuaForReachnessScreen
 import raf.console.zickreee.screens.DuaIsmulAzamScreen
 import raf.console.zickreee.screens.DuaQuranScreen
@@ -32,7 +34,9 @@ import raf.console.zickreee.screens.MorningAndEveningAzkarsScreen
 import raf.console.zickreee.screens.NamesScreen
 import raf.console.zickreee.screens.SalavatScreen
 import raf.console.zickreee.screens.SettingsScreen
+import raf.console.zickreee.screens.WelcomeScreen
 import raf.console.zickreee.ui.theme.AppTheme
+import raf.console.zickreee.util.AppPreferences
 import raf.console.zickreee.util.SettingsManager
 import raf.console.zickreee.util.ThemeOption
 import raf.console.zickreee.viewmodel.AppViewModel
@@ -80,11 +84,29 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppNavigation(appViewModel: AppViewModel) {
     val navController = rememberNavController()
+    val context = LocalContext.current
+    val appPreferences = remember { AppPreferences(context) }
+
+    // Проверяем, первый ли это запуск
+    val isFirstLaunch = appPreferences.isFirstLaunch()
 
     NavHost(
         navController = navController,
-        startDestination = "home"
+        startDestination = if (isFirstLaunch) "welcome" else "home"
     ) {
+        composable("welcome") {
+            WelcomeScreen(
+                onStartClick = {
+                    // Устанавливаем флаг, что первый запуск завершен
+                    appPreferences.setFirstLaunchCompleted()
+                    // Переходим на главный экран
+                    navController.navigate("home") {
+                        popUpTo("welcome") { inclusive = true } // Удаляем WelcomeScreen из стека
+                    }
+                }
+            )
+        }
+
         composable("home") {
             HomeScreen(navController = navController)
         }
@@ -502,36 +524,71 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 arabisNames,
                 transcriptNames,
                 translateNames,
-                infoNames
+                infoNames,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }
             )
         }
         composable("duaFromQuran") {
-            DuaQuranScreen(LocalContext.current)
+            DuaQuranScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
         composable("salawat") {
-            SalavatScreen(LocalContext.current)
+            SalavatScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
         composable("istighfar") {
-            IstigfarScreen(LocalContext.current)
+            IstigfarScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
         composable("duaForReachness") {
-            DuaForReachnessScreen(LocalContext.current)
+            DuaForReachnessScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
         composable("morningEveningAzkar") {
-            MorningAndEveningAzkarsScreen(LocalContext.current)
+            MorningAndEveningAzkarsScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+            })
         }
         composable("ismulAzam") {
-            DuaIsmulAzamScreen(LocalContext.current)
+            DuaIsmulAzamScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
         composable("duaRasul") {
-            DuaRasulScreen(LocalContext.current)
+            DuaRasulScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
+
+        composable("afterNamaz") {
+            AfterNamazScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
+        }
+
         composable("settings") {
             SettingsScreen(onBackClick = { navController.popBackStack() },
-                appViewModel = appViewModel )
+                appViewModel = appViewModel,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
         }
         composable("aboutApp") {
-            AboutScreen()
+            AboutScreen(navController)
         }
     }
 }

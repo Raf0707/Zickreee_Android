@@ -1,5 +1,6 @@
 package raf.console.zickreee.screens
 
+
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -22,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -31,11 +31,11 @@ import raf.console.zickreee.components.Position
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
-fun SalavatScreen(
+fun AfterNamazScreen(
     context: Context,
     onHomeClick: () -> Unit // Колбэк для нажатия на кнопку "На главную"
 ) {
-    val duas = remember { loadDuasFromAssets(context, "salavat.json") }
+    val duas = remember { loadDuasFromAssets(context, "dua_after_namaz.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -48,7 +48,7 @@ fun SalavatScreen(
             // Заголовок с отступом сверху и выравниванием по центру
             item {
                 Text(
-                    text = "Салават - благословление на Пророка Мухаммада Салля Ллаху алейхи уа Саллям",
+                    text = "Дуа и зикры после намаза",
                     style = MaterialTheme.typography.headlineMedium.copy(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,

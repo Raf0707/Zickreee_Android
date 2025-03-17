@@ -23,6 +23,7 @@ fun HomeScreen(navController: NavController) {
         "Утренние и вечерние азкары" to "morningEveningAzkar",
         "Дуа исмуль А'зам" to "ismulAzam",
         "72 дуа Пророка Мухаммада Салля Ллаху алейхи уа Саллям" to "duaRasul",
+        "Дуа и зикры после намаза" to "afterNamaz",
         "Настройки" to "settings",
         "О приложении" to "aboutApp"
     )

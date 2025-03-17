@@ -146,17 +146,17 @@ fun NameItem(
                     )
                 }
             }
-        }
 
-        // Стрелочка сбоку (справа) и выровнена по вертикальному центру
-        Icon(
-            imageVector = Icons.Outlined.KeyboardArrowDown,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier
-                .align(Alignment.CenterEnd) // Выравнивание по правому краю и вертикальному центру
-                .rotate(animatedArrowRotation.value)
-                .size(24.dp),
-            contentDescription = null
-        )
+            // Стрелочка внизу карточки
+            Icon(
+                imageVector = Icons.Outlined.KeyboardArrowDown,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally) // Выравнивание по центру горизонтально
+                    .rotate(animatedArrowRotation.value)
+                    .size(24.dp),
+                contentDescription = null
+            )
+        }
     }
 }
