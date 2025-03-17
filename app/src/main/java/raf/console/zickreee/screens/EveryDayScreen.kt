@@ -27,15 +27,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import raf.console.zickreee.components.DuaItem
+import raf.console.zickreee.components.EveryDayDuaItem
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.util.loadDuasFromAssets
+import raf.console.zickreee.util.loadEveryDayDuasFromAssets
 
 @Composable
 fun EveryDayScreen(
     context: Context,
     onHomeClick: () -> Unit // Колбэк для нажатия на кнопку "На главную"
 ) {
-    val duas = remember { loadDuasFromAssets(context, "every_day.json") }
+    val duas = remember { loadEveryDayDuasFromAssets(context, "every_day.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -45,7 +47,7 @@ fun EveryDayScreen(
                 .fillMaxSize()
                 .padding(horizontal = 16.dp, vertical = 24.dp) // Горизонтальные отступы для всего экрана
         ) {
-            // Заголовок с отступом сверху и выравниванием по центру
+            // Заголовок экрана с отступом сверху и выравниванием по центру
             item {
                 Text(
                     text = "Дуа и зикры на каждый день",
@@ -61,13 +63,14 @@ fun EveryDayScreen(
             }
 
             // Список карточек
-            items(duas) { dua ->
-                DuaItem(
-                    arabicDua = dua.arabic_dua,
-                    transcript = dua.transcript,
-                    translate = dua.translate,
-                    position = if (duas.indexOf(dua) == 0) Position.TOP
-                    else if (duas.indexOf(dua) == duas.size - 1) Position.BOTTOM
+            items(duas) { everyDayDua ->
+                EveryDayDuaItem(
+                    day = everyDayDua.day, // Передаем день недели
+                    arabicDua = everyDayDua.arabic_dua,
+                    transcript = everyDayDua.transcript,
+                    translate = everyDayDua.translate,
+                    position = if (duas.indexOf(everyDayDua) == 0) Position.TOP
+                    else if (duas.indexOf(everyDayDua) == duas.size - 1) Position.BOTTOM
                     else Position.CENTER
                 )
                 Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
@@ -93,4 +96,3 @@ fun EveryDayScreen(
         }
     }
 }
-
