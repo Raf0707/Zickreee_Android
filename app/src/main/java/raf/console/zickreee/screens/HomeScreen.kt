@@ -24,6 +24,9 @@ fun HomeScreen(navController: NavController) {
         "Дуа исмуль А'зам" to "ismulAzam",
         "72 дуа Пророка Мухаммада Салля Ллаху алейхи уа Саллям" to "duaRasul",
         "Дуа и зикры после намаза" to "afterNamaz",
+        "33 аята защиты Аль-Хирз" to "hirz",
+        "Рукъя - лечение аятами Корана" to "rukia",
+        "Дуа и зикры на каждый день" to "everyDay",
         "Настройки" to "settings",
         "О приложении" to "aboutApp"
     )

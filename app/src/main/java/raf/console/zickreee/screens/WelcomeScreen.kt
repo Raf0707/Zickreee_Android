@@ -102,7 +102,7 @@ fun WelcomeScreen(
             onClick = {
                 ChromeCustomTabUtil.openUrl(
                     context = context,
-                    url = "https://github.com/Raf0707/Zickreee_Android/blob/master/LICENSE",
+                    url = "https://github.com/Raf0707/Zickreee_Android/blob/master/LICENSE.md",
                 )
             },
             modifier = Modifier

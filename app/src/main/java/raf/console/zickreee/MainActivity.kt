@@ -28,10 +28,13 @@ import raf.console.zickreee.screens.DuaForReachnessScreen
 import raf.console.zickreee.screens.DuaIsmulAzamScreen
 import raf.console.zickreee.screens.DuaQuranScreen
 import raf.console.zickreee.screens.DuaRasulScreen
+import raf.console.zickreee.screens.EveryDayScreen
+import raf.console.zickreee.screens.HirzScreen
 import raf.console.zickreee.screens.HomeScreen
 import raf.console.zickreee.screens.IstigfarScreen
 import raf.console.zickreee.screens.MorningAndEveningAzkarsScreen
 import raf.console.zickreee.screens.NamesScreen
+import raf.console.zickreee.screens.RukiaScreen
 import raf.console.zickreee.screens.SalavatScreen
 import raf.console.zickreee.screens.SettingsScreen
 import raf.console.zickreee.screens.WelcomeScreen
@@ -575,6 +578,27 @@ fun AppNavigation(appViewModel: AppViewModel) {
 
         composable("afterNamaz") {
             AfterNamazScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
+        }
+
+        composable("hirz") {
+            HirzScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
+        }
+
+        composable("rukia") {
+            RukiaScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                })
+        }
+
+        composable("everyDay") {
+            EveryDayScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
                 })

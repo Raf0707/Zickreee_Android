@@ -30,11 +30,11 @@ import raf.console.zickreee.components.Position
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
-fun DuaRasulScreen(
+fun HirzScreen(
     context: Context,
     onHomeClick: () -> Unit // Колбэк для нажатия на кнопку "На главную"
 ) {
-    val duas = remember { loadDuasFromAssets(context, "72_dua_proroka_mir_emu.json") }
+    val duas = remember { loadDuasFromAssets(context, "hirz.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -47,7 +47,7 @@ fun DuaRasulScreen(
             // Заголовок с отступом сверху и выравниванием по центру
             item {
                 Text(
-                    text = "72 Дуа Пророка Мухаммада Салля Ллаху алейхи уа Саллям",
+                    text = "33 аята защиты Аль-Хирз",
                     style = MaterialTheme.typography.headlineMedium.copy(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,
