@@ -5,6 +5,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -43,6 +45,8 @@ import androidx.navigation.NavController
 import raf.console.archnotes.utils.ChromeCustomTabUtil
 import raf.console.archnotes.utils.FeedbackHelper
 import raf.console.zickreee.R
+import raf.console.zickreee.util.ChromeUtilNoTranslate
+import raf.console.zickreee.util.CustomWebView
 
 
 @Composable
@@ -115,7 +119,8 @@ fun AboutScreen(
                         subtitle = stringResource(R.string.web_mes),
                         icon = painterResource(id = R.drawable.web),
                         onClick = {
-                            ChromeCustomTabUtil.openUrl(
+
+                            ChromeUtilNoTranslate.openUrl(
                                 context = context,
                                 url = "https://raf0707.github.io/zickreee_web",
                             )
