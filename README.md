@@ -1,4 +1,4 @@
-<h1 align="center">Zickreee_Android</h1>
+<h1 align="center">Zickreee</h1>
 <h2 align="center">from R&R</h2>
 
 <p align="center">
@@ -17,8 +17,8 @@
 
 ## 🆕 Material3 Design Zickreee for Android
 ## ☑️ Join [ibnRustum](https://t.me/ibnRustum) on Telegram for important updates.
-## ⚠ This is the official repository of the Saum application. The sole author and owner is Rafail Kikmatulin. This application is published exclusively by me in RuStore.
-## ⚠ Это официальное хринилище приложения Saum. Единственным автором и владельцем является Рафаил Кикматулин. Данное приложение публикуется исключительно мной в RuStore.
+## ⚠ This is the official repository of the Zickreee application. The sole author and owner is Rafail Kikmatulin. This application is published exclusively by me in RuStore.
+## ⚠ Это официальное хринилище приложения Zickreee. Единственным автором и владельцем является Рафаил Кикматулин. Данное приложение публикуется исключительно мной в RuStore.
 ## 📱 Screenshots
 | <img src="github-files/1.jpg" width="200"/> | <img src="github-files/2.jpg" width="200"/> | <img src="github-files/3.jpg" width="200"/> | <img src="github-files/4.jpg" width="200"/> | <img src="github-files/5.jpg" width="200"/> |
 |:---:|:---:|:---:|:---:|:---:|
