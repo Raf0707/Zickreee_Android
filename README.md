@@ -1,3 +1,61 @@
+<h1 align="center">Zickreee_Android</h1>
+<h2 align="center">from R&R</h2>
+
+<p align="center">
+  <a href="https://github.com/Raf0707/Zickreee_Android" style="text-decoration:none" area-label="Android">
+    <img src="https://img.shields.io/badge/Platform-Android-green.svg">
+  </a>
+  <a href="https://github.com/Raf0707/Zickreee_Android.git" style="text-decoration:none" area-label="Min API: 22">
+    <img src="https://img.shields.io/badge/minSdkVersion-22-green.svg">
+  </a>
+  <a href="https://apps.rustore.ru/app/ru.tabiin.zickreee" style="text-decoration:none" area-label="RuStore">
+    <img src="https://img.shields.io/badge/Download-RuStore-green">
+  </a>
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/zickreee"><img src="https://badges.crowdin.net/settings-for-free-fire-app/localized.svg">
+  </a>
+</p>
+
+## 🆕 Material3 Design Zickreee for Android
+## ⚠ Join [ibnRustum](https://t.me/ibnRustum) on Telegram for important updates.
+## ⚠ This is the official repository of the Saum application. The sole author and owner is Rafail Kikmatulin. This application is published exclusively by me in RuStore.
+## ⚠ Это официальное хринилище приложения Saum. Единственным автором и владельцем является Рафаил Кикматулин. Данное приложение публикуется исключительно мной в RuStore.
+## 📱 Screenshots
+| <img src="github-files/1.jpg" width="200"/> | <img src="github-files/2.jpg" width="200"/> | <img src="github-files/3.jpg" width="200"/> | <img src="github-files/4.jpg" width="200"/> | <img src="github-files/5.jpg" width="200"/> |
+|:---:|:---:|:---:|:---:|:---:|
+| Main Screen | After Namaz | After Namaz Dua | Settings Screen | About App | 
+
+| <img src="github-files/6.jpg" width="200"/> | <img src="github-files/7.jpg" width="200"/> | <img src="github-files/8.jpg" width="200"/> | <img src="github-files/9.jpg" width="200"/> | <img src="github-files/10.jpg" width="200"/> |
+|:---:|:---:|:---:|:---:|:---:|
+| Settings Dark | AboutApp Dark | Dua Open Dark | Dua Dark | Main Dark |
+
+## 🧭 Navigation never made easier 
+Self-explanatory interface without overloaded menus
+
+## 📦 Included Features
+- **Daily Duas**: Access a collection of daily duas with Arabic text, transliteration, and translation.
+- **Customizable Reminders**: Set reminders to read specific duas at your preferred times.
+- **Dark Mode**: Enjoy a comfortable reading experience with a dark theme.
+- **Offline Access**: Use the app without an internet connection.
+- **Share Functionality**: Share duas with friends and family to spread the blessings.
+
+## ❓ FAQ
+If you find or notice any bugs, please report them by creating an issue or by contacting us in the [Telegram](https://t.me/+RY5V2IZ4IgY3YTcy) group.
+
+If you have any feature suggestions, please create an issue with detailed information or contact us in the [Telegram](https://t.me/+RY5V2IZ4IgY3YTcy) group.
+
+___
+
+## 🔗 Social links
+**Telegram channel:** https://t.me/ibnRustum <br>
+**Telegram group:** https://t.me/+RY5V2IZ4IgY3YTcy <br>
+**Zickreee Web:** https://raf0707.github.io/zickreee_web/
+**Zickreee Android** https://www.rustore.ru/catalog/app/raf.console.zickreee
+
+## 🌐 Internet
+You don't need an internet connection to use this app.
+
+## 🗂️ License
+
 # GNU GENERAL PUBLIC LICENSE
 ## Version 3, 29 June 2007
 
@@ -307,3 +365,4 @@ The hypothetical commands show w' and show c' should show the appropriate parts 
 You should also get your employer (if you work as a programmer) or school, if any, to sign a "copyright disclaimer" for the program, if necessary. For more information on this, and how to apply and follow the GNU GPL, see https://www.gnu.org/licenses/.
 
 The GNU General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. But first, please read https://www.gnu.org/licenses/why-not-lgpl.html.
+
