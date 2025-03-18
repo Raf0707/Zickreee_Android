@@ -18,9 +18,12 @@
 ## 🆕 Material3 Design Zickreee for Android
 ## ⚠ Join [ibnRustum](https://t.me/ibnRustum) on Telegram for important updates.
 ## 📱 Screenshots
-| <img src="github-files/1.jpg" width="200"/> | <img src="github-files/2.jpg" width="200"/> | <img src="github-files/3.jpg" width="200"/> | <img src="github-files/4.jpg" width="200"/> | <img src="github-files/5.jpg" width="200"/> | <img src="github-files/6.jpg" width="200"/> | <img src="github-files/7.jpg" width="200"/> | <img src="github-files/8.jpg" width="200"/> | <img src="github-files/9.jpg" width="200"/> | <img src="github-files/10.jpg" width="200"/> |
+| <img src="github-files/1.jpg" width="200"/> | <img src="github-files/2.jpg" width="200"/> | <img src="github-files/3.jpg" width="200"/> | <img src="github-files/4.jpg" width="200"/> | <img src="github-files/5.jpg" width="200"/> |
 |:---:|:---:|:---:|:---:|:---:|
 | Main Screen | After Namaz | After Namaz Dua | Settings Screen | About App | 
+
+| <img src="github-files/6.jpg" width="200"/> | <img src="github-files/7.jpg" width="200"/> | <img src="github-files/8.jpg" width="200"/> | <img src="github-files/9.jpg" width="200"/> | <img src="github-files/10.jpg" width="200"/> |
+|:---:|:---:|:---:|:---:|:---:|
 | Settings Dark | AboutApp Dark | Dua Open Dark | Dua Dark | Main Dark |
 
 ## 🧭 Navigation never made easier 
