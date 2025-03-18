@@ -18,9 +18,11 @@
 ## 🆕 Material3 Design Zickreee for Android
 ## ⚠ Join [ibnRustum](https://t.me/ibnRustum) on Telegram for important updates.
 ## 📱 Screenshots
-| <img src="github-files/splash_screen.jpg" width="200"/> | <img src="github-files/screen_main.jpg" width="200"/> | <img src="github-files/screen_features.jpg" width="200"/> | <img src="github-files/screen_settings.jpg" width="200"/> | <img src="github-files/screen_dark_mode.jpg" width="200"/> | <img src="github-files/screen_tutorial.jpg" width="200"/> |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| Splash Screen | Main Screen | Features Screen | Settings Screen | Dark Mode | Tutorial |
+| <img src="github-files/1.jpg" width="200"/> | <img src="github-files/2.jpg" width="200"/> | <img src="github-files/3.jpg" width="200"/> | <img src="github-files/4.jpg" width="200"/> | <img src="github-files/5.jpg" width="200"/> | <img src="github-files/6.jpg" width="200"/> | <img src="github-files/7.jpg" width="200"/> | <img src="github-files/8.jpg" width="200"/> | <img src="github-files/9.jpg" width="200"/> | <img src="github-files/10.jpg" width="200"/> |
+|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
+| Main Screen | After Namaz | After Namaz Dua | Settings Screen | About App | 
+| Settings Dark | AboutApp Dark | Dua Open Dark | Dua Dark | Main Dark |
 
 ## 🧭 Navigation never made easier 
 Self-explanatory interface without overloaded menus
@@ -43,6 +45,7 @@ ___
 **Telegram channel:** https://t.me/ibnRustum <br>
 **Telegram group:** https://t.me/+RY5V2IZ4IgY3YTcy <br>
 **Zickreee Web:** https://raf0707.github.io/zickreee_web/
+**Zickreee Android** https://www.rustore.ru/catalog/app/raf.console.zickreee
 
 ## 🌐 Internet
 You don't need an internet connection to use this app.
