@@ -3,7 +3,6 @@ package raf.console.zickreee.screens
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,18 +21,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import raf.console.zickreee.components.DuaItem
+import raf.console.zickreee.data.DuaItem
 import raf.console.zickreee.components.Position
+import raf.console.zickreee.data.BookmarkManager
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
 fun SalavatScreen(
     context: Context,
-    onHomeClick: () -> Unit // Колбэк для нажатия на кнопку "На главную"
+    onHomeClick: () -> Unit,
+    bookmarkManager: BookmarkManager
 ) {
     val duas = remember { loadDuasFromAssets(context, "salavat.json") }
 
@@ -68,7 +68,8 @@ fun SalavatScreen(
                     translate = dua.translate,
                     position = if (duas.indexOf(dua) == 0) Position.TOP
                     else if (duas.indexOf(dua) == duas.size - 1) Position.BOTTOM
-                    else Position.CENTER
+                    else Position.CENTER,
+                    bookmarkManager = bookmarkManager
                 )
                 Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
             }

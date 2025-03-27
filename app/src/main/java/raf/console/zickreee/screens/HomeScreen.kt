@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import raf.console.zickreee.components.Position
-import raf.console.zickreee.components.StaticItem
+import raf.console.zickreee.data.StaticItem
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -25,8 +25,14 @@ fun HomeScreen(navController: NavController) {
         "72 дуа Пророка Мухаммада Салля Ллаху алейхи уа Саллям" to "duaRasul",
         "Дуа и зикры после намаза" to "afterNamaz",
         "33 аята защиты Аль-Хирз" to "hirz",
+        "Дуа для защиты и безопасности" to "duaProtect",
         "Рукъя - лечение аятами Корана" to "rukia",
         "Дуа и зикры на каждый день" to "everyDay",
+        "Дуа Ифтитах (Сунна)" to "duaIftitahSunna",
+        "Дуа Сайф ас-Сагир" to "duaSeyfSagir",
+        "Дуа Таджнама" to "duaTajnama",
+        "Даляиль Аль-Хайрат" to "dalailAlKhairat",
+        "Сохраненки" to "saves",
         "Настройки" to "settings",
         "О приложении" to "aboutApp"
     )

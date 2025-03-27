@@ -4,7 +4,6 @@ package raf.console.zickreee.screens
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,16 +25,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import raf.console.zickreee.components.DuaItem
-import raf.console.zickreee.components.EveryDayDuaItem
+import raf.console.zickreee.data.EveryDayDuaItem
 import raf.console.zickreee.components.Position
-import raf.console.zickreee.util.loadDuasFromAssets
+import raf.console.zickreee.data.BookmarkManager
 import raf.console.zickreee.util.loadEveryDayDuasFromAssets
 
 @Composable
 fun EveryDayScreen(
     context: Context,
-    onHomeClick: () -> Unit // Колбэк для нажатия на кнопку "На главную"
+    onHomeClick: () -> Unit,
+    bookmarkManager: BookmarkManager
 ) {
     val duas = remember { loadEveryDayDuasFromAssets(context, "every_day.json") }
 

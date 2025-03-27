@@ -1,4 +1,4 @@
-package raf.console.zickreee.components
+package raf.console.zickreee.data
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import raf.console.zickreee.components.Position
 
 @Composable
 fun StaticItem(

@@ -2,7 +2,6 @@ package raf.console.zickreee.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,8 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import raf.console.zickreee.components.NameItem
+import raf.console.zickreee.data.NameItem
 import raf.console.zickreee.components.Position
+import raf.console.zickreee.data.BookmarkManager
 import raf.console.zickreee.data.Name
 
 @Composable
@@ -32,7 +32,8 @@ fun NamesScreen(
     transcriptNames: List<String>,
     translateNames: List<String>,
     infoNames: List<String>,
-    onHomeClick: () -> Unit // Колбэк для нажатия на кнопку "На главную"
+    onHomeClick: () -> Unit,
+    bookmarkManager: BookmarkManager
 ) {
     // Объединяем 4 списка в один список объектов Name
     val names = arabicNames
@@ -78,7 +79,8 @@ fun NamesScreen(
                         0 -> Position.TOP
                         names.size - 1 -> Position.BOTTOM
                         else -> Position.CENTER
-                    }
+                    },
+                    bookmarkManager = bookmarkManager
                 )
                 Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
             }

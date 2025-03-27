@@ -1,4 +1,4 @@
-package raf.console.zickreee.screens
+package raf.console.zickreee.screens.dalailhairat
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -24,18 +24,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import raf.console.zickreee.data.DuaItem
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.data.BookmarkManager
+import raf.console.zickreee.data.DuaItem
 import raf.console.zickreee.util.loadDuasFromAssets
 
+
 @Composable
-fun DuaForReachnessScreen(
+fun DuaIstigfarScreen(
     context: Context,
     onHomeClick: () -> Unit,
     bookmarkManager: BookmarkManager
 ) {
-    val duas = remember { loadDuasFromAssets(context, "dua_for_reachness.json") }
+    val duas = remember { loadDuasFromAssets(context, "dua_istigfar.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -48,7 +49,7 @@ fun DuaForReachnessScreen(
             // Заголовок с отступом сверху и выравниванием по центру
             item {
                 Text(
-                    text = "Дуа для финансового и духовного благополучия",
+                    text = "Дуа Истигфар (дуа о прощении грехов)",
                     style = MaterialTheme.typography.headlineMedium.copy(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,

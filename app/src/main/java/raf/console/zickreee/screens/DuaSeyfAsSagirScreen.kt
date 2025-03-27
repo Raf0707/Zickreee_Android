@@ -1,5 +1,6 @@
 package raf.console.zickreee.screens
 
+
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -21,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,12 +32,12 @@ import raf.console.zickreee.data.BookmarkManager
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
-fun DuaForReachnessScreen(
+fun DuaSeyfAsSagirScreen(
     context: Context,
-    onHomeClick: () -> Unit,
+    onHomeClick: () -> Unit, // Колбэк для нажатия на кнопку "На главную"
     bookmarkManager: BookmarkManager
 ) {
-    val duas = remember { loadDuasFromAssets(context, "dua_for_reachness.json") }
+    val duas = remember { loadDuasFromAssets(context, "seyf_as_sagir.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -48,7 +50,7 @@ fun DuaForReachnessScreen(
             // Заголовок с отступом сверху и выравниванием по центру
             item {
                 Text(
-                    text = "Дуа для финансового и духовного благополучия",
+                    text = "Дуа сейф Ас-Сагир",
                     style = MaterialTheme.typography.headlineMedium.copy(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,

@@ -1,0 +1,702 @@
+[
+    {
+        "num": "1",
+        "arabic_dua": "اللَّهُ جَلَّ جَلَالُهُ",
+        "transcript": "Allāh jalla jalāluhu.",
+        "translate": "Allah, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "2",
+        "arabic_dua": "الرَّحْمَـٰنُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Rahmān jalla jalāluhu.",
+        "translate": "The Merciful, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "3",
+        "arabic_dua": "الرَّحِيمُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Rahīm jalla jalāluhu.",
+        "translate": "The Most Merciful, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "4",
+        "arabic_dua": "المَلِكُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Malik jalla jalāluhu.",
+        "translate": "The King, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "5",
+        "arabic_dua": "القُدُّوسُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Quddūs jalla jalāluhu.",
+        "translate": "The Most Sacred, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "6",
+        "arabic_dua": "السَّلَـٰمُ جَلَّ جَلَالُهُ",
+        "transcript": "As-Salām jalla jalāluhu.",
+        "translate": "The Source of Peace, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "7",
+        "arabic_dua": "المُؤْمِنُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muʾmin jalla jalāluhu.",
+        "translate": "The Faithful, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "8",
+        "arabic_dua": "المُهَيْمِنُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muhaymin jalla jalāluhu.",
+        "translate": "The Guardian, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "9",
+        "arabic_dua": "العَزِيزُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-ʿAzīz jalla jalāluhu.",
+        "translate": "The Almighty, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "10",
+        "arabic_dua": "الجَبَّارُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Jabbār jalla jalāluhu.",
+        "translate": "The Compeller, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "11",
+        "arabic_dua": "المُتَكَبِّرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mutakabbir jalla jalāluhu.",
+        "translate": "The Supreme, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "12",
+        "arabic_dua": "الخَـٰلِقُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Khāliq jalla jalāluhu.",
+        "translate": "The Creator, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "13",
+        "arabic_dua": "البَارِئُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Bāri’ jalla jalāluhu.",
+        "translate": "The Originator, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "14",
+        "arabic_dua": "المُصَوِّرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muṣawwir jalla jalāluhu.",
+        "translate": "The Fashioner, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "15",
+        "arabic_dua": "الغَفَّارُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ghaffār jalla jalāluhu.",
+        "translate": "The All-Forgiving, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "16",
+        "arabic_dua": "القَهَّارُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Qahhār jalla jalāluhu.",
+        "translate": "The All-Victorious, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "17",
+        "arabic_dua": "الوَهَّابُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wahhāb jalla jalāluhu.",
+        "translate": "The Giver, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "18",
+        "arabic_dua": "الرَّزَّاقُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Razzāq jalla jalāluhu.",
+        "translate": "The Provider, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "19",
+        "arabic_dua": "الفَتَّاحُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Fattāh jalla jalāluhu.",
+        "translate": "The Opener, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "20",
+        "arabic_dua": "العَلِيمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-ʿAlīm jalla jalāluhu.",
+        "translate": "The All-Knowing, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "21",
+        "arabic_dua": "القَابِضُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Qābid jalla jalāluhu.",
+        "translate": "The Withholder, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "22",
+        "arabic_dua": "البَاسِطُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Bāsit jalla jalāluhu.",
+        "translate": "The Expander, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "23",
+        "arabic_dua": "الخَافِضُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Khāfiḍ jalla jalāluhu.",
+        "translate": "The Humbler, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "24",
+        "arabic_dua": "الرَّافِعُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Rāfiʿ jalla jalāluhu.",
+        "translate": "The Elevator, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "25",
+        "arabic_dua": "المُعِزُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muʿizz jalla jalāluhu.",
+        "translate": "The Honourer, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "26",
+        "arabic_dua": "المُذِلُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mudhil jalla jalāluhu.",
+        "translate": "The Dishonourer, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "27",
+        "arabic_dua": "السَّمِيعُ جَلَّ جَلَالُهُ",
+        "transcript": "As-Samīʿ jalla jalāluhu.",
+        "translate": "The All-Hearing, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "28",
+        "arabic_dua": "البَصِيرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Baṣīr jalla jalāluhu.",
+        "translate": "The All-Seeing, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "29",
+        "arabic_dua": "الحَكَمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥakam jalla jalāluhu.",
+        "translate": "The Judge, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "30",
+        "arabic_dua": "العَدْلُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-ʿAdl jalla jalāluhu.",
+        "translate": "The Just, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "31",
+        "arabic_dua": "اللَّطِيفُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Latīf jalla jalāluhu.",
+        "translate": "The Subtle, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "32",
+        "arabic_dua": "الخَبِيرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Khabīr jalla jalāluhu.",
+        "translate": "The All-Aware, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "33",
+        "arabic_dua": "الحَلِيمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥalīm jalla jalāluhu.",
+        "translate": "The Forbearing, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "34",
+        "arabic_dua": "العَظِيمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-ʿAẓīm jalla jalāluhu.",
+        "translate": "The Magnificent, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "35",
+        "arabic_dua": "الغَفُورُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ghafūr jalla jalāluhu.",
+        "translate": "The Forgiving, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "36",
+        "arabic_dua": "الشَّكُورُ جَلَّ جَلَالُهُ",
+        "transcript": "Ash-Shakūr jalla jalāluhu.",
+        "translate": "The Grateful, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "37",
+        "arabic_dua": "العَلِيُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-‘Aliyy jalla jalāluhu.",
+        "translate": "The High, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "38",
+        "arabic_dua": "الكَبِيرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Kabīr jalla jalāluhu.",
+        "translate": "The Great, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "39",
+        "arabic_dua": "الحَفِيظُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥafīẓ jalla jalāluhu.",
+        "translate": "The Guardian, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "40",
+        "arabic_dua": "المُقِيتُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muqīt jalla jalāluhu.",
+        "translate": "The Nourisher, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "41",
+        "arabic_dua": "الحَسِيبُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Hasīb jalla jalāluhu.",
+        "translate": "The Reckoner, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "42",
+        "arabic_dua": "الجَلِيلُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Jalīl jalla jalāluhu.",
+        "translate": "The Majestic, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "43",
+        "arabic_dua": "الكَرِيمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Karīm jalla jalāluhu.",
+        "translate": "The Generous, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "44",
+        "arabic_dua": "الرَّقِيبُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Raqīb jalla jalāluhu.",
+        "translate": "The Watcher, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "45",
+        "arabic_dua": "المُجِيبُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mujīb jalla jalāluhu.",
+        "translate": "The Answerer, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "46",
+        "arabic_dua": "الوَاسِعُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wāsi’ jalla jalāluhu.",
+        "translate": "The Vast, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "47",
+        "arabic_dua": "الحَكِيمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥakīm jalla jalāluhu.",
+        "translate": "The Wise, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "48",
+        "arabic_dua": "الوَدُودُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wadūd jalla jalāluhu.",
+        "translate": "The Loving, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "49",
+        "arabic_dua": "المَجِيدُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Majīd jalla jalāluhu.",
+        "translate": "The Glorious, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "50",
+        "arabic_dua": "البَاعِثُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Bāʿith jalla jalāluhu.",
+        "translate": "The Resurrector, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "51",
+        "arabic_dua": "الشَّهِيدُ جَلَّ جَلَالُهُ",
+        "transcript": "Ash-Shahīd jalla jalāluhu.",
+        "translate": "The Witness, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "52",
+        "arabic_dua": "الحَقُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥaqq jalla jalāluhu.",
+        "translate": "The Truth, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "53",
+        "arabic_dua": "الوَكِيلُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wakīl jalla jalāluhu.",
+        "translate": "The Trustee, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "54",
+        "arabic_dua": "القَوِيُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Qawiyy jalla jalāluhu.",
+        "translate": "The Strong, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "55",
+        "arabic_dua": "المَتِينُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Matīn jalla jalāluhu.",
+        "translate": "The Firm, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "56",
+        "arabic_dua": "الوَلِيُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Waliyy jalla jalāluhu.",
+        "translate": "The Protecting Friend, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "57",
+        "arabic_dua": "الحَمِيدُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥamīd jalla jalāluhu.",
+        "translate": "The Praiseworthy, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "58",
+        "arabic_dua": "المُحْصِي جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muhsī jalla jalāluhu.",
+        "translate": "The Counter, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "59",
+        "arabic_dua": "المُبْدِئُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mubdiʾ jalla jalāluhu.",
+        "translate": "The Originator, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "60",
+        "arabic_dua": "المُعِيدُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muʿīd jalla jalāluhu.",
+        "translate": "The Returner, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "61",
+        "arabic_dua": "المُحْيِي جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muhyī jalla jalāluhu.",
+        "translate": "The Reviver, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "62",
+        "arabic_dua": "المُمِيتُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mumīt jalla jalāluhu.",
+        "translate": "The Giver of Death, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "63",
+        "arabic_dua": "الحَيُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ḥayy jalla jalāluhu.",
+        "translate": "The Living, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "64",
+        "arabic_dua": "القَيُّومُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Qayyūm jalla jalāluhu.",
+        "translate": "The Self-Sustaining, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "65",
+        "arabic_dua": "الوَاجِدُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wājid jalla jalāluhu.",
+        "translate": "The Perceiver, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "66",
+        "arabic_dua": "المَاجِدُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mājid jalla jalāluhu.",
+        "translate": "The Most Glorious, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "67",
+        "arabic_dua": "الوَاحِدُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wāḥid jalla jalāluhu.",
+        "translate": "The One, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "68",
+        "arabic_dua": "الصَّمَدُ جَلَّ جَلَالُهُ",
+        "transcript": "Aṣ-Ṣamad jalla jalāluhu.",
+        "translate": "The Eternal, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "69",
+        "arabic_dua": "القَادِرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Qādir jalla jalāluhu.",
+        "translate": "The All-Powerful, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "70",
+        "arabic_dua": "المُقْتَدِرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muqtadir jalla jalāluhu.",
+        "translate": "The Omnipotent, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "71",
+        "arabic_dua": "المُقَدِّمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muqaddim jalla jalāluhu.",
+        "translate": "The Advancer, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "72",
+        "arabic_dua": "المُؤَخِّرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muʾakhkhir jalla jalāluhu.",
+        "translate": "The Deferrer, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "73",
+        "arabic_dua": "الأَوَّلُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-ʾAwwal jalla jalāluhu.",
+        "translate": "The First, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "74",
+        "arabic_dua": "الآخِرُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-ʾĀkhir jalla jalāluhu.",
+        "translate": "The Last, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "75",
+        "arabic_dua": "الظَّاهِرُ جَلَّ جَلَالُهُ",
+        "transcript": "Aẓ-Ẓāhir jalla jalāluhu.",
+        "translate": "The Manifest, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "76",
+        "arabic_dua": "البَاطِنُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Bātin jalla jalāluhu.",
+        "translate": "The Hidden, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "77",
+        "arabic_dua": "الوَالِي جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wālī jalla jalāluhu.",
+        "translate": "The Patron, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "78",
+        "arabic_dua": "المُتَعَالِ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mutaʿali jalla jalāluhu.",
+        "translate": "The Self-Exalted, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "79",
+        "arabic_dua": "البَرُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Barr jalla jalāluhu.",
+        "translate": "The Benign, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "80",
+        "arabic_dua": "التَّوَّابُ جَلَّ جَلَالُهُ",
+        "transcript": "At-Tawwāb jalla jalāluhu.",
+        "translate": "The Acceptor of Repentance, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "81",
+        "arabic_dua": "المُنْتَقِمُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muntaqim jalla jalāluhu.",
+        "translate": "The Avenger, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "82",
+        "arabic_dua": "العَفُوُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-‘Afuww jalla jalāluhu.",
+        "translate": "The Pardoner, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "83",
+        "arabic_dua": "الرَّؤوفُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Ra’ūf jalla jalāluhu.",
+        "translate": "The Compassionate, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "84",
+        "arabic_dua": "مَالِكُ المُلْكِ جَلَّ جَلَالُهُ",
+        "transcript": "Mālikul Mulk jalla jalāluhu.",
+        "translate": "The Possessor of the Kingdom, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "85",
+        "arabic_dua": "ذُو الجَلَالِ وَالإِكْرَامِ جَلَّ جَلَالُهُ",
+        "transcript": "Dhul-Jalāli Wal ʾikrām jalla jalāluhu.",
+        "translate": "Lord of Majesty and Honour, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "86",
+        "arabic_dua": "المُقْسِطُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Muqsit jalla jalāluhu.",
+        "translate": "The Equitable, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "87",
+        "arabic_dua": "الجَامِعُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Jāmi’ jalla jalāluhu.",
+        "translate": "The Gatherer, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "88",
+        "arabic_dua": "الغَنِيُّ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Ghaniyy jalla jalāluhu.",
+        "translate": "The Rich, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "89",
+        "arabic_dua": "المُغْنِي جَلَّ جَلَالُهُ",
+        "transcript": "Al-Mughni jalla jalāluhu.",
+        "translate": "The Enricher, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "90",
+        "arabic_dua": "المَانِعُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Māni’ jalla jalāluhu.",
+        "translate": "The Withholder, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "91",
+        "arabic_dua": "الضَّارُّ جَلَّ جَلَالُهُ",
+        "transcript": "Aḍ-Ḍārr jalla jalāluhu.",
+        "translate": "The Afflicter, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "92",
+        "arabic_dua": "النَّافِعُ جَلَّ جَلَالُهُ",
+        "transcript": "An-Nāfi’ jalla jalāluhu.",
+        "translate": "The Benefactor, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "93",
+        "arabic_dua": "النُّورُ جَلَّ جَلَالُهُ",
+        "transcript": "An-Nūr jalla jalāluhu.",
+        "translate": "The Light, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "94",
+        "arabic_dua": "الهَادِي جَلَّ جَلَالُهُ",
+        "transcript": "Al-Hādī jalla jalāluhu.",
+        "translate": "The Guide, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "95",
+        "arabic_dua": "البَدِيعُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Badīʿ jalla jalāluhu.",
+        "translate": "The Originator, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "96",
+        "arabic_dua": "البَاقِي جَلَّ جَلَالُهُ",
+        "transcript": "Al-Bāqī jalla jalāluhu.",
+        "translate": "The Lasting, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "97",
+        "arabic_dua": "الوَارِثُ جَلَّ جَلَالُهُ",
+        "transcript": "Al-Wārith jalla jalāluhu.",
+        "translate": "The Heir, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "98",
+        "arabic_dua": "الرَّشِيدُ جَلَّ جَلَالُهُ",
+        "transcript": "Ar-Rashīd jalla jalāluhu.",
+        "translate": "The Guide to the Right Path, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "99",
+        "arabic_dua": "الصَّبُورُ جَلَّ جَلَالُهُ",
+        "transcript": "Aṣ-Ṣabūr jalla jalāluhu.",
+        "translate": "The Patient, He is exalted!",
+        "isbookmarked": "false"
+    },
+    {
+        "num": "",
+        "arabic_dua": "الَّذِي تَقَدَّسَتْ عَنِ الأَشْبَاهِ ذَاتُهُ، وَتَنَزَّهَتْ عَنْ مُشَابَهَةِ الأَمْثَالِ صِفَاتُهُ. وَاحِدٌ لَا مِنْ قِلَّةٍ وَمَوْجُودٌ لَا مِنْ عِلَّةٍ. بِالبِرِّ مَعْرُوفٌ وَبِالإِحْسَانِ مَوْصُوفٌ. مَعْرُوفٌ بِلَا غَايَةٍ وَمَوْصُوفٌ بِلَا نِهَايَةٍ. أَوَّلٌ بِلَا ابْتِدَاءٍ، وَآخِرٌ بِلَا انْتِهَاءٍ. لَا يُنْسَبُ إِلَيْهِ البَنُونَ، وَلَا يُفْنِيهِ تَدَاوُلُ الأَوْقَاتِ، وَلَا تُوهِنُهُ السِّنُونَ، كُلُّ المَخْلُوقَاتِ قَهْرُ عَظَمَتِهِ، وَأَمْرُهُ بِالكَافِ وَالنُّونِ. بِذِكْرِهِ أَنِسَ المُخْلِصُون، وَبِرُؤْيَتِهِ تَقَرُّ العُيُونُ، وَبِتَوْحِيدِهِ ابْتَهَجَ المُوَحِّدُونَ. هَدَى أَهْلَ طَاعَتِهِ إِلَى صِرَاطٍ مُسْتَقِيمٍ، وَأَبَاحَ أَهْلَ مَحَبَّتِهِ جَنَّاتِ النَّعِيمِ، وَعَلِمَ عَدَدَ أَنْفَاسِ مَخْلُوقَاتِهِ بِعِلْمِهِ القَدِيمِ، وَيَرَى حَرَكَاتِ أَرْجُلِ النَّمْلِ فِي جُنْحِ اللَّيْلِ البَهِيمِ. يُسَبِّحُهُ الطَّائِرُ فِي وَكْرِهِ، وَيُمَجِّدُهُ الوَحْشُ فِي قَفْرِهِ، مُحِيطٌ بِعَمَلِ العَبْدِ سِرِّهِ وَجَهْرِهِ، وَكَفِيلٌ لِلمُؤْمِنِينَ بِتَأيِيدِهِ وَنَصْرِهِ، وَتَطْمَئِنُّ القُلُوبُ الوَجِلَةُ بِذِكْرِهِ وَكَشْفِ ضُرِّهِ، وَمِنْ ءَايَـٰتِهِۦٓ أَنْ تَقُومَ السَّمَآءُ وَالْأَرْضُ بِأَمْرِهِ، أَحَاطَ بِكُلِّ شَيْءٍ عِلْمًا وَغَفَرَ ذُنُوبَ الْمُذْنِبِينَ كَرَمًا وَحِلْمًا، لَيْسَ كَمِثْلِهِۦ شَىْءٌ ۖ وَهُوَ السَّمِيعُ الْبَصِيرُ. اللَّهُمَّ اكْفِنَا السُّوءَ بِمَا شِئْتَ وَكَيْفَ شِئْتَ إِنَّكَ عَلَى مَا تَشَاءُ قَدِيرٌ (3). يَا نِعْمَ المَوْلَى وَيَا نِعْمَ النَّصِيرُ، غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ المَصِيرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا باللَّهِ العَلِيِّ العَظِيمِ. سُبْحَانَكَ لَا نُحْصِي ثَنَاءً عَلَيْكَ أَنْتَ كَمَا أَثْنَيْتَ عَلَى نَفْسِكَ،  جَلَّ وَجْهُكَ وَعَزَّ جَاهُكَ، يَفْعَلُ اللَّهُ مَا يَشَاءُ بِقُدْرَتِهِ وَيَحْكُمُ مَا يُرِيدُ بِعِزَّتِهِ. يَا حَيُّ يَا قَيُّومُ يَا بَدِيعَ السَّمَاوَاتِ وَالأَرْضِ، يَا ذَا الجَلَالِ وَالإِكْرَامِ، لَا إِلَهَ إِلَّا أَنْتَ بِرَحْمَتِكَ نَسْتَغِيثُ، وَمِنْ عَذَابِكَ نَسْتَجِيرُ، يَا غِيَاثَ المُسْتَغِيثِينَ لَا إِلَهَ إِلَّا أَنْتَ بِجَاهِ سَيِّدِنَا مُحَّمَدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ أَغِثْنَا وَارْحَمْنَا. رَحْمَةُ اللَّهِ وَبَرَكَاتُهُ عَلَيْكُمْ أَهْلَ البَيْتِ إِنَّهُ حَمِيدٌ مَجِيدٌ: إِنَّمَا يُرِيدُ اللَّهُ لِيُذْهِبَ عَنكُمُ الرِّجْسَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيرًا؛ إِنَّ اللَّهَ وَمَلَـٰٓئِكَتَهُۥ يُصَلُّونَ عَلَى النَّبِىِّ ۚ يَـٰٓأَيُّهَا الَّذِينَ ءَامَنُواْ صَلُّواْ عَلَيْهِ وَسَلِّمُواْ تَسْلِيمًا. اللَّهُمَّ صَلِّ أَفْضَلَ صَلَاةٍ عَلَى أَسْعَدِ مَخْلُوقَاتِكَ سَيِّدِنَا مُحَّمَدٍ وَعَلَى آلِهِ وَصَحْبِهِ وَسَلِّمْ عَدَدَ مَعْلُومَاتِكَ وَمِدَادَ كَلِمَاتِكَ كُلَّمَا ذَكَرَكَ الذَّاكِرُونَ وَغَفَلَ عَنْ ذِكْرِهِ الْغَافِلُونَ.",
+        "transcript": "Alladhī taqaddasat ʿanil ashbāhi dhātuhu watanazzahat ʿan mushābahatil amthāli ṣifātuhu wāḥidun lā min qillatin wamawjūdun lā min ʿillatin, bilbirri maʿrūfun wabil iḥsāni mawṣūfun maʿrūfun bilā ghāyatin wa mawṣūfun bilā nihāyatin awwalun bilāb tidāʾin wa ākhirun bilāntihāʾin lā yunsabu ilayhil banūna walā yufnīhi tadāwulul awqāti walā tūhinuhus sinūna kullul makhlūqāti qahru ʿaẓamatihi wa amruhu bilkāfi wan nūni bidhikrihi anisal mukhliṣūna wa biruʾyatihi taqarrul ʿuyūnu wa bitawḥīdihibtahajal muwaḥḥidūna hadā ahla ṭāʿatihi ilā ṣirāṭim mustaqīmin wa abāḥa ahla maḥabbatihi jannātin naʿīmi wa ʿalima ʿadada anfāsi makhlūqātihi biʿilmihil qadīmi wa yarā ḥarakāti arjulin namli fī junḥil laylil bahīmu yusabbiḥuhuṭ ṭāʾiru fī wakrihi wa yumajjiduhul waḥshu fī qafrihi muḥīṭun biʿamalil ʿabdi sirrihi wajahrihi wa kafīlun lilmuʾminīna bitaʾyīdihi wa naṣrihi wa taṭmaʾinnul qulūbul wajilatu bidhikrihi wa kashfi ḍurrihi wa min āyātihi an taqūmas samāʾu wal arḍu bi amrihi aḥāṭa bikulli shayʾin ʿilman wa ghafara dhunubal mudhnibīna karaman waḥ ilman laysa kamithlihi shayʾun wa huwas samīʿul baṣīr. Allāhumma kfinās sūʾa bimā shiʾta wa kayfa shiʾta innaka ʿalā mā tashāʾu qadīrun (3). Yā niʿmal mawlā wa yā niʿman naṣīr ghufrānaka rabbanā wa ilaykal maṣīr wā lā ḥawla wā lā quwwata illā biLlahil ʿaliyyil ʿaẓīm. Subḥānaka lā nuḥṣī thanāʾan ʿalayka ʾanta kamāthnayta ʿalā nafsika  jalla wajhuka waʿazza jāhuka yafʿaluLlāhu mā yashāʾu biqudratihi wa yaḥkumu mā yurīdu biʿizzatihi. Yā ḥayyu yā qayyūm yā badīʿas samāwāti wal arḍi yā dhāl jalāli wal ikrāmi lā ilāha illā anta biraḥmatika nastaghīthu wa min ʿadhabika nastajīru yā ghayyāthal mustaghīthīna lā ilāha illā anta bijāhi sayyidinā Muḥammadin ṣallAllāhu ʿalayhi wasallama aghithnā warḥamnā. RaḥmatuLlāhi wa barakātuhu ʿalaykum ahlal bayti innahu ḥamīdun majīdun: innamā yurīduLlāhu liyudh-hiba ʿankumur rijsa ahlal bayti wa yuṭahhirakum taṭhīran; innaLlāha wamalāʾikatahu yuṣallūna ʿalān nabiyyi yā ayyuhāl ladhīna āmanū ṣallū ʿalayhi wasallimū taslīman. Allāhumma ṣalli afḍala ṣalātin ʿalā asʿadi makhlūqātika Sayyidinā Muḥammadin wa ʿalā ʾālihi wa ṣaḥbihi wa sallim ʿadada maʿlūmātika wa midāda kalimātika kullamā dhakarakadh dhākirūna wa ghafala ʿan dhikrihil ghāfilūn.",
+        "translate": "His Essence is pure beyond any likeness and His Attributes are exalted beyond any resemblance to any similarities. He is One, not among any one or thing, and Exists, but is not begotten. He is acclaimed for kindness, and renowned for giving the best of generosity, and this attribution is boundless. He is First, without beginning, and Last, without end. Sons are not ascribed to Him. The passage of time does not exhaust Him nor do the years weaken Him. All of creation is subject to His grandeur. His command is the kaf and nun ['kun' - Be]. The sincere are familiar with the remembrance of Him and their eyes delight in His proximity. The people of tawhid are gratified by His oneness. He guides the obedient to Him onto a straight path, and He bestows the people of His love to have the Gardens of Bliss. He knows the number of the breaths of His creatures by His eternal knowledge. He sees the movements of the feet of ants in the dark night. The birds glorify Him in their nests and wild animals celebrate His glory in the wilderness. He has full knowledge of the actions of His slave, both in secret and public. He guarantees the believers His support and help. Fearful hearts are put at rest by remembrance of Him and by it harm is removed. Among His signs is that heaven and earth are sustained by His command. His knowledge encompasses everything. He forgives the wrong actions of those who commit them, out of generosity and forbearance. 'There is nothing like Him and He is the All-Hearing, All-Seeing.' O Allah! Save us from the evils decreed, for indeed, You bring to fruition whatever You will (3 times). O best Protector, O Best Helper, Forgive us, our Lord. The ultimate end is to You. There is no power nor strength except by Allah, the High, the Immense. Glory be to You. We cannot number Your praises as You praise Yourself. Your Face is majestic and Your honour exalted. Allah does whatever He wishes by His power and judges what He wills by His might. Ya Hayy. Ya Qayyum. O Originator of the heavens and the earth. O Lord of Majesty and Honour! There is no god but You. We seek help by Your mercy. We seek protection from Your punishment. O You Who help those who ask for help. There is no god but You. By the honour of Sayyidina Muhammad sallAllahu alayhi wasallam give us succour and show us mercy. May the mercy of Allah and His blessings be upon you, People of the House. He is Praiseworthy, Glorious. 'Allah desires to remove all impurity from you, People of the House, and to purify you completely. Allah and His angels call down blessings on the Prophet. O you who believe, call down blessings on him and ask for complete peace and safety for him.' O Allah, send the best blessings to the happiest of Your creatures, Sayyidina Muhammad and on his family and Companions and grant him peace - in number as great as what You know, and the ink (that writes) Your words when those who remember You, remember; and those who neglect You, neglect.",
+        "isbookmarked": "false"
+    }
+]

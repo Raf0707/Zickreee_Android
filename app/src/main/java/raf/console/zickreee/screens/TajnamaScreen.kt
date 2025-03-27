@@ -1,5 +1,7 @@
 package raf.console.zickreee.screens
 
+
+
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -30,12 +32,12 @@ import raf.console.zickreee.data.BookmarkManager
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
-fun DuaForReachnessScreen(
+fun TajnamaScreen(
     context: Context,
     onHomeClick: () -> Unit,
     bookmarkManager: BookmarkManager
 ) {
-    val duas = remember { loadDuasFromAssets(context, "dua_for_reachness.json") }
+    val duas = remember { loadDuasFromAssets(context, "tajnama.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -48,7 +50,7 @@ fun DuaForReachnessScreen(
             // Заголовок с отступом сверху и выравниванием по центру
             item {
                 Text(
-                    text = "Дуа для финансового и духовного благополучия",
+                    text = "Дуа Таджнама",
                     style = MaterialTheme.typography.headlineMedium.copy(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,

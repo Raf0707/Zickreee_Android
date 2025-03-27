@@ -6,28 +6,28 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import raf.console.zickreee.data.BookmarkManager
 import raf.console.zickreee.screens.AboutScreen
 import raf.console.zickreee.screens.AfterNamazScreen
 import raf.console.zickreee.screens.DuaForReachnessScreen
+import raf.console.zickreee.screens.DuaIftitahSunnaScreen
 import raf.console.zickreee.screens.DuaIsmulAzamScreen
+import raf.console.zickreee.screens.DuaProtectScreen
 import raf.console.zickreee.screens.DuaQuranScreen
 import raf.console.zickreee.screens.DuaRasulScreen
+import raf.console.zickreee.screens.DuaSeyfAsSagirScreen
 import raf.console.zickreee.screens.EveryDayScreen
 import raf.console.zickreee.screens.HirzScreen
 import raf.console.zickreee.screens.HomeScreen
@@ -36,11 +36,30 @@ import raf.console.zickreee.screens.MorningAndEveningAzkarsScreen
 import raf.console.zickreee.screens.NamesScreen
 import raf.console.zickreee.screens.RukiaScreen
 import raf.console.zickreee.screens.SalavatScreen
+import raf.console.zickreee.screens.SavesScreen
 import raf.console.zickreee.screens.SettingsScreen
+import raf.console.zickreee.screens.TajnamaScreen
 import raf.console.zickreee.screens.WelcomeScreen
+import raf.console.zickreee.screens.dalailhairat.AsmaUlHusnaScreen
+import raf.console.zickreee.screens.dalailhairat.AsmaUnNabiSAWScreen
+import raf.console.zickreee.screens.dalailhairat.DalailHomeScreen
+import raf.console.zickreee.screens.dalailhairat.DuaFatihScreen
+import raf.console.zickreee.screens.dalailhairat.DuaHatmScreen
+import raf.console.zickreee.screens.dalailhairat.DuaIstigfarScreen
+import raf.console.zickreee.screens.dalailhairat.DuaNiyatScreen
+import raf.console.zickreee.screens.dalailhairat.DuaTaufickScreen
+import raf.console.zickreee.screens.dalailhairat.HowToReadScreen
+import raf.console.zickreee.screens.dalailhairat.ImportantDuaScreen
+import raf.console.zickreee.screens.dalailhairat.Part1Screen
+import raf.console.zickreee.screens.dalailhairat.Part2Screen
+import raf.console.zickreee.screens.dalailhairat.Part3Screen
+import raf.console.zickreee.screens.dalailhairat.Part4Screen
+import raf.console.zickreee.screens.dalailhairat.Part5Screen
+import raf.console.zickreee.screens.dalailhairat.Part6Screen
+import raf.console.zickreee.screens.dalailhairat.Part7Screen
+import raf.console.zickreee.screens.dalailhairat.Part8Screen
 import raf.console.zickreee.ui.theme.AppTheme
 import raf.console.zickreee.util.AppPreferences
-import raf.console.zickreee.util.SettingsManager
 import raf.console.zickreee.util.ThemeOption
 import raf.console.zickreee.viewmodel.AppViewModel
 import raf.console.zickreee.viewmodel.AppViewModelFactory
@@ -93,6 +112,8 @@ fun AppNavigation(appViewModel: AppViewModel) {
     // Проверяем, первый ли это запуск
     val isFirstLaunch = appPreferences.isFirstLaunch()
 
+    val bookmarkManager = BookmarkManager(LocalContext.current)
+
     NavHost(
         navController = navController,
         startDestination = if (isFirstLaunch) "welcome" else "home"
@@ -110,9 +131,12 @@ fun AppNavigation(appViewModel: AppViewModel) {
             )
         }
 
+        // Навигация на основной странице
+
         composable("home") {
             HomeScreen(navController = navController)
         }
+
         composable("namesOfAllah") {
             val arabisNames = listOf(
                 "للهُﷻ ",
@@ -530,78 +554,118 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 infoNames,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                }
+                },
+                bookmarkManager = bookmarkManager
             )
         }
         composable("duaFromQuran") {
             DuaQuranScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
         composable("salawat") {
             SalavatScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
         composable("istighfar") {
             IstigfarScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
         composable("duaForReachness") {
             DuaForReachnessScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
         composable("morningEveningAzkar") {
             MorningAndEveningAzkarsScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-            })
+            }, bookmarkManager)
         }
         composable("ismulAzam") {
             DuaIsmulAzamScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
         composable("duaRasul") {
             DuaRasulScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
 
         composable("afterNamaz") {
             AfterNamazScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
 
         composable("hirz") {
             HirzScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
+        }
+
+        composable("duaProtect") {
+            DuaProtectScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }, bookmarkManager)
         }
 
         composable("rukia") {
             RukiaScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
         }
 
         composable("everyDay") {
             EveryDayScreen(LocalContext.current,
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
-                })
+                }, bookmarkManager)
+        }
+
+        composable("duaIftitahSunna") {
+            DuaIftitahSunnaScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaSeyfSagir") {
+            DuaSeyfAsSagirScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaTajnama") {
+            TajnamaScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("saves") {
+            SavesScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("dalailAlKhairat") {
+            DalailHomeScreen(navController = navController)
         }
 
         composable("settings") {
@@ -614,5 +678,129 @@ fun AppNavigation(appViewModel: AppViewModel) {
         composable("aboutApp") {
             AboutScreen(navController)
         }
+
+
+        // Навигация Даляиль Аль-Хайрат
+
+        composable("back") {
+            HomeScreen(navController = navController)
+        }
+
+        composable("howToRead") {
+            HowToReadScreen()
+        }
+
+        composable("importantDua") {
+            ImportantDuaScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaIstigfar") {
+            DuaIstigfarScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaNiyat") {
+            DuaNiyatScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaFatih") {
+            DuaFatihScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("asmaUlHusna") {
+            AsmaUlHusnaScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaTaufick") {
+            DuaTaufickScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("namesRasul") {
+            AsmaUnNabiSAWScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("mon") {
+            Part1Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("tus") {
+            Part2Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("wen") {
+            Part3Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("ths") {
+            Part4Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("fri") {
+            Part5Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("sat") {
+            Part6Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("sun") {
+            Part7Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("mon2") {
+            Part8Screen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
+        composable("duaHatm") {
+            DuaHatmScreen(LocalContext.current,
+                onHomeClick = {
+                    navController.navigate("dalailAlKhairat") // Переход на главный экран
+                }, bookmarkManager)
+        }
+
     }
 }
