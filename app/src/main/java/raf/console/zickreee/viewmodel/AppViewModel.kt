@@ -1,5 +1,6 @@
 package raf.console.zickreee.viewmodel
 
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -24,6 +25,18 @@ class AppViewModel(private val settingsManager: SettingsManager) : ViewModel() {
     private val _contrastTheme = MutableStateFlow(settingsManager.contrastLevel)
     val contrastTheme: StateFlow<ContrastLevel> = _contrastTheme.asStateFlow()
 
+    private val _showArabic = MutableStateFlow(settingsManager.showArabic)
+    val showArabic: StateFlow<Boolean> = _showArabic.asStateFlow()
+
+    private val _showTranscription = MutableStateFlow(settingsManager.showTranscription)
+    val showTranscription: StateFlow<Boolean> = _showTranscription.asStateFlow()
+
+    private val _showTranslation = MutableStateFlow(settingsManager.showTranslation)
+    val showTranslation: StateFlow<Boolean> = _showTranslation.asStateFlow()
+
+    private val _showInfo = MutableStateFlow(settingsManager.showInfo)
+    val showInfo: StateFlow<Boolean> = _showInfo.asStateFlow()
+
     // Функции для обновления состояний
     fun updateTheme(newTheme: ThemeOption) {
         _theme.value = newTheme
@@ -38,5 +51,31 @@ class AppViewModel(private val settingsManager: SettingsManager) : ViewModel() {
     fun updateContrastTheme(contrastLevel: ContrastLevel) {
         _contrastTheme.value = contrastLevel
         settingsManager.contrastLevel = contrastLevel
+    }
+
+    // Методы для обновления состояний
+    fun updateShowArabic(show: Boolean) {
+        _showArabic.value = show
+        settingsManager.showArabic = show
+    }
+
+    fun updateShowTranscription(show: Boolean) {
+        _showTranscription.value = show
+        settingsManager.showTranscription = show
+    }
+
+    fun updateShowTranslation(show: Boolean) {
+        _showTranslation.value = show
+        settingsManager.showTranslation = show
+        if (!show) {
+            updateShowInfo(false) // Автоматически отключаем info при отключении перевода
+        }
+    }
+
+    fun updateShowInfo(show: Boolean) {
+        if (showTranslation.value) { // Можно изменить только если включен перевод
+            _showInfo.value = show
+            settingsManager.showInfo = show
+        }
     }
 }

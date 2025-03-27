@@ -35,4 +35,20 @@ class SettingsManager(context: Context) {
         set(value) {
             sharedPreferences.edit().putString("contrast_level", value.name).apply()
         }
+
+    var showArabic: Boolean
+        get() = sharedPreferences.getBoolean("show_arabic", true)
+        set(value) = sharedPreferences.edit().putBoolean("show_arabic", value).apply()
+
+    var showTranscription: Boolean
+        get() = sharedPreferences.getBoolean("show_transcription", true)
+        set(value) = sharedPreferences.edit().putBoolean("show_transcription", value).apply()
+
+    var showTranslation: Boolean
+        get() = sharedPreferences.getBoolean("show_translation", true)
+        set(value) = sharedPreferences.edit().putBoolean("show_translation", value).apply()
+
+    var showInfo: Boolean
+        get() = sharedPreferences.getBoolean("show_info", true)
+        set(value) = sharedPreferences.edit().putBoolean("show_info", value).apply()
 }

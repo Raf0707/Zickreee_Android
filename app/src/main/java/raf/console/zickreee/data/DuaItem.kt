@@ -53,7 +53,9 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import raf.console.zickreee.components.ExpandingTransition
+import raf.console.zickreee.components.Field
 import raf.console.zickreee.components.Position
+import raf.console.zickreee.util.rememberDuaDisplaySettings
 import java.io.File
 
 // 1. Сначала создадим модель данных для закладок в новом файле data/Bookmark.kt
@@ -139,11 +141,25 @@ fun DuaItem(
     translate: String,
     additionalInfo: String? = null,
     position: Position,
-    bookmarkManager: BookmarkManager
+    bookmarkManager: BookmarkManager,
+    showArabic: Boolean = rememberDuaDisplaySettings().showArabic,
+    showTranscription: Boolean = rememberDuaDisplaySettings().showTranscription,
+    showTranslation: Boolean = rememberDuaDisplaySettings().showTranslation,
+    showInfo: Boolean = rememberDuaDisplaySettings().showInfo
 ) {
-    val showDescription = remember { mutableStateOf(false) }
+    // Определяем видимые элементы в правильном порядке
+    val visibleFields = buildList {
+        if (showArabic && arabicDua.isNotBlank()) add(Field.ARABIC to arabicDua)
+        if (showTranscription && transcript.isNotBlank()) add(Field.TRANSCRIPT to transcript)
+        if (showTranslation && translate.isNotBlank()) add(Field.TRANSLATE to translate)
+        if (showInfo && additionalInfo?.isNotBlank() == true) add(Field.INFO to additionalInfo)
+    }
+
+    // Стрелка показывается только если есть что раскрывать (более 1 элемента)
+    val showArrow = visibleFields.size > 1
+    val showDescription = remember { mutableStateOf(!showArrow) } // Если один элемент - сразу раскрыт
+
     val context = LocalContext.current
-    //val isBookmarked = remember { mutableStateOf(bookmarkManager.isBookmarked(arabicDua)) }
     val bookmarks by bookmarkManager.getBookmarksFlow().collectAsState(initial = emptyList())
     val isBookmarked by remember(bookmarks, arabicDua) {
         derivedStateOf { bookmarks.any { it.arabicDua == arabicDua } }
@@ -181,16 +197,16 @@ fun DuaItem(
             .fillMaxWidth()
             .clip(shape)
             .background(animatedBackgroundColor.value)
-            .clickable { showDescription.value = !showDescription.value }
+            .clickable(enabled = showArrow) { showDescription.value = !showDescription.value }
             .padding(16.dp)
     ) {
-        // Верхняя часть с кнопками и текстом
+        // Верхняя часть с кнопками и первым видимым полем
         Column(modifier = Modifier.fillMaxWidth()) {
-            // Ряд кнопок с фиксированной высотой
+            // Ряд кнопок
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(48.dp), // Фиксированная высота для кнопок
+                    .height(48.dp),
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -223,10 +239,16 @@ fun DuaItem(
                 // Кнопка копирования
                 IconButton(
                     onClick = {
+                        val textToCopy = buildString {
+                            if (showArabic) append("$arabicDua\n\n")
+                            if (showTranscription) append("$transcript\n\n")
+                            if (showTranslation) append(translate)
+                            if (showInfo && additionalInfo != null) append("\n\n$additionalInfo")
+                        }
                         val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                        val clip = ClipData.newPlainText("dua_text", "$arabicDua\n\n$transcript\n\n$translate")
+                        val clip = ClipData.newPlainText("dua_text", textToCopy.trim())
                         clipboardManager.setPrimaryClip(clip)
-                        Toast.makeText(context, "Текст дуа скопирован", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Текст скопирован", Toast.LENGTH_SHORT).show()
                     },
                     modifier = Modifier.size(40.dp)
                 ) {
@@ -240,12 +262,18 @@ fun DuaItem(
                 // Кнопка поделиться
                 IconButton(
                     onClick = {
+                        val textToShare = buildString {
+                            if (showArabic) append("$arabicDua\n\n")
+                            if (showTranscription) append("$transcript\n\n")
+                            if (showTranslation) append(translate)
+                            if (showInfo && additionalInfo != null) append("\n\n$additionalInfo")
+                        }
                         val sendIntent = Intent().apply {
                             action = Intent.ACTION_SEND
-                            putExtra(Intent.EXTRA_TEXT, "$arabicDua\n\n$transcript\n\n$translate")
+                            putExtra(Intent.EXTRA_TEXT, textToShare.trim())
                             type = "text/plain"
                         }
-                        context.startActivity(Intent.createChooser(sendIntent, "Поделиться дуа"))
+                        context.startActivity(Intent.createChooser(sendIntent, "Поделиться"))
                     },
                     modifier = Modifier.size(40.dp)
                 ) {
@@ -257,61 +285,68 @@ fun DuaItem(
                 }
             }
 
-            // Арабский текст с отступом сверху
-            Text(
-                text = arabicDua,
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    textAlign = TextAlign.Center
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp) // Увеличенный отступ сверху
-            )
-        }
-
-        // Раскрывающаяся часть
-        ExpandingTransition(
-            visible = showDescription.value,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(Modifier.fillMaxWidth()) {
-                Spacer(modifier = Modifier.height(12.dp))
-                HorizontalDivider()
+            // Первое видимое поле
+            visibleFields.firstOrNull()?.let { (fieldType, text) ->
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = transcript,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Center
-                    ),
-                    modifier = Modifier.fillMaxWidth()
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = translate,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Center
-                    ),
+                    text = text,
+                    color = when (fieldType) {
+                        Field.ARABIC -> MaterialTheme.colorScheme.onSurface
+                        else -> MaterialTheme.colorScheme.onSurfaceVariant
+                    },
+                    style = when (fieldType) {
+                        Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+                        else -> MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center)
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
             }
         }
 
-        // Стрелочка внизу
-        Icon(
-            imageVector = Icons.Outlined.KeyboardArrowUp,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .rotate(animatedArrowRotation.value)
-                .size(24.dp),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        // Раскрывающаяся часть (остальные поля)
+        if (visibleFields.size > 1) {
+            ExpandingTransition(
+                visible = showDescription.value,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.fillMaxWidth()) {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    HorizontalDivider()
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    visibleFields.drop(1).forEach { (fieldType, text) ->
+                        Text(
+                            text = text,
+                            color = when (fieldType) {
+                                Field.ARABIC -> MaterialTheme.colorScheme.onSurface
+                                else -> MaterialTheme.colorScheme.onSurfaceVariant
+                            },
+                            style = when (fieldType) {
+                                Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+                                else -> MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center)
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                }
+            }
+        }
+
+        // Стрелка (только если есть что раскрывать)
+        if (showArrow) {
+            Icon(
+                imageVector = Icons.Outlined.KeyboardArrowUp,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .rotate(animatedArrowRotation.value)
+                    .size(24.dp),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }
-
 // 4. Пример использования в родительском компоненте:
 /*@Composable
 fun DuaListScreen() {

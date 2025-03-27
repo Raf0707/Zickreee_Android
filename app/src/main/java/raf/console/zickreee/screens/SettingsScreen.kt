@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.ColorLens
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
@@ -67,6 +68,11 @@ fun SettingsScreen(
     val theme by appViewModel.theme.collectAsState()
     val dynamicColor by appViewModel.dynamicColor.collectAsState()
     val contrastTheme by appViewModel.contrastTheme.collectAsState()
+
+    val showArabic by appViewModel.showArabic.collectAsState()
+    val showTranscription by appViewModel.showTranscription.collectAsState()
+    val showTranslation by appViewModel.showTranslation.collectAsState()
+    val showInfo by appViewModel.showInfo.collectAsState()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -195,6 +201,101 @@ fun SettingsScreen(
                         onCheckedChange = { newValue ->
                             appViewModel.updateContrastTheme(if (newValue) ContrastLevel.High else ContrastLevel.Default)
                         }
+                    )
+                }
+            }
+
+            item {
+                Text(
+                    text = "Text Display Settings",
+                    modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.Gray
+                )
+            }
+
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = showArabic,
+                        onCheckedChange = { appViewModel.updateShowArabic(it) }
+                    )
+                    Text(
+                        text = "Show Arabic text",
+                        modifier = Modifier.padding(start = 16.dp),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
+
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = showTranscription,
+                        onCheckedChange = { appViewModel.updateShowTranscription(it) }
+                    )
+                    Text(
+                        text = "Show transcription",
+                        modifier = Modifier.padding(start = 16.dp),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
+
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = showTranslation,
+                        onCheckedChange = {
+                            appViewModel.updateShowTranslation(it)
+                            if (!it) appViewModel.updateShowInfo(false) // Автоматически скрываем info
+                        }
+                    )
+                    Text(
+                        text = "Show translation",
+                        modifier = Modifier.padding(start = 16.dp),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
+
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = showInfo && showTranslation, // Зависит от перевода
+                        onCheckedChange = {
+                            if (showTranslation) { // Можно изменить только если включен перевод
+                                appViewModel.updateShowInfo(it)
+                            }
+                        },
+                        enabled = showTranslation // Блокируем если перевод выключен
+                    )
+                    Text(
+                        text = "Show additional info",
+                        modifier = Modifier.padding(start = 16.dp),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = if (showTranslation) MaterialTheme.colorScheme.onSurface
+                        else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
                     )
                 }
             }
