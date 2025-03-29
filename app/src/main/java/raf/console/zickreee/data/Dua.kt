@@ -1,6 +1,7 @@
 package raf.console.zickreee.data
 
 data class Dua(
+    val day: String? = null,
     val arabic_dua: String,
     val transcript: String,
     val translate: String

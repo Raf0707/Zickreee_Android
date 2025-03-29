@@ -28,7 +28,8 @@ import androidx.compose.ui.unit.dp
 import raf.console.zickreee.data.EveryDayDuaItem
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.data.BookmarkManager
-import raf.console.zickreee.util.loadEveryDayDuasFromAssets
+import raf.console.zickreee.data.DuaItem
+import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
 fun EveryDayScreen(
@@ -36,7 +37,7 @@ fun EveryDayScreen(
     onHomeClick: () -> Unit,
     bookmarkManager: BookmarkManager
 ) {
-    val duas = remember { loadEveryDayDuasFromAssets(context, "every_day.json") }
+    val duas = remember { loadDuasFromAssets(context, "every_day.json") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -62,15 +63,16 @@ fun EveryDayScreen(
             }
 
             // Список карточек
-            items(duas) { everyDayDua ->
-                EveryDayDuaItem(
-                    day = everyDayDua.day, // Передаем день недели
-                    arabicDua = everyDayDua.arabic_dua,
-                    transcript = everyDayDua.transcript,
-                    translate = everyDayDua.translate,
-                    position = if (duas.indexOf(everyDayDua) == 0) Position.TOP
-                    else if (duas.indexOf(everyDayDua) == duas.size - 1) Position.BOTTOM
-                    else Position.CENTER
+            items(duas) { dua ->
+                DuaItem(
+                    day = dua.day, // Передаем день недели
+                    arabicDua = dua.arabic_dua,
+                    transcript = dua.transcript,
+                    translate = dua.translate,
+                    position = if (duas.indexOf(dua) == 0) Position.TOP
+                    else if (duas.indexOf(dua) == duas.size - 1) Position.BOTTOM
+                    else Position.CENTER,
+                    bookmarkManager = bookmarkManager
                 )
                 Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
             }

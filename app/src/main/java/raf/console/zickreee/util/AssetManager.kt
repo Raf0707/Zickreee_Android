@@ -13,7 +13,7 @@ fun loadDuasFromAssets(context: Context, fileName: String): List<Dua> {
     return Gson().fromJson(jsonString, listType)
 }
 
-fun loadEveryDayDuasFromAssets(context: Context, fileName: String): List<EveryDayDua> {
+/*fun loadEveryDayDuasFromAssets(context: Context, fileName: String): List<EveryDayDua> {
     val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
     val listType = object : TypeToken<List<EveryDayDua>>() {}.type
     return Gson().fromJson(jsonString, listType)
@@ -23,4 +23,4 @@ fun loadBmNumDuasFromAssets(context: Context, fileName: String): List<BmNumDua> 
     val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
     val listType = object : TypeToken<List<Dua>>() {}.type
     return Gson().fromJson(jsonString, listType)
-}
+}*/

@@ -60,6 +60,7 @@ import java.io.File
 
 // 1. Сначала создадим модель данных для закладок в новом файле data/Bookmark.kt
 data class Bookmark(
+    val day: String? = null,
     val arabicDua: String,
     val transcript: String,
     val translate: String,
@@ -136,6 +137,7 @@ class BookmarkManager(private val context: Context) {
 // 3. Обновленный DuaItem с кнопкой закладки
 @Composable
 fun DuaItem(
+    day: String? = null,
     arabicDua: String,
     transcript: String,
     translate: String,
