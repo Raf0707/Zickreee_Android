@@ -1,5 +1,6 @@
 package raf.console.zickreee.presentation.screens.counter
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,14 +8,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -75,8 +79,30 @@ fun CounterListScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = { showAddOrEditDialog() }) {
-                Icon(Icons.Default.Add, "Добавить счетчик")
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.End
+            ) {
+                // Новая маленькая кнопка с иконкой дома
+                FloatingActionButton(
+                    onClick = { navController.navigate("home") },
+                    modifier = Modifier.size(40.dp),
+                    elevation = FloatingActionButtonDefaults.elevation(4.dp)
+                ) {
+                    Icon(
+                        Icons.Default.Home,
+                        contentDescription = "Домой",
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+
+                // Существующая кнопка добавления
+                FloatingActionButton(
+                    onClick = { showAddOrEditDialog() },
+                    modifier = Modifier.size(56.dp)
+                ) {
+                    Icon(Icons.Default.Add, "Добавить счетчик")
+                }
             }
         }
     ) { padding ->
