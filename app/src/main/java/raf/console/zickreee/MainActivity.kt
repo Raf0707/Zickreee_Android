@@ -1,9 +1,11 @@
 package raf.console.zickreee
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -112,6 +114,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppNavigation(appViewModel: AppViewModel) {
     val navController = rememberNavController()
@@ -690,7 +693,7 @@ fun AppNavigation(appViewModel: AppViewModel) {
                     counterId = counterId,
                     viewModel = hiltViewModel(),
                     onBack = {
-                        navController.navigate("home") // Переход на главный экран
+                        navController.navigate("counter") // Переход на главный экран
                     }
                 )
             }
