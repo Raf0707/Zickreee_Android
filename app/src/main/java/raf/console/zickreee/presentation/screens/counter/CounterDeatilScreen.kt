@@ -47,10 +47,15 @@ import raf.console.zickreee.presentation.viewmodel.CounterViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CounterDetailScreen(
-    counterId: Int?,
+    counterId: Long,
     viewModel: CounterViewModel,
     onBack: () -> Unit
 ) {
+
+    LaunchedEffect(counterId) {
+        viewModel.loadCounterById(counterId)
+    }
+
     val counterState by viewModel.currentCounter.collectAsState()
     var isEditing by remember { mutableStateOf(false) }
     var title by remember { mutableStateOf("") }
@@ -68,6 +73,7 @@ fun CounterDetailScreen(
             progress = it.progress
         }
     }
+
 
     Scaffold(
         topBar = {

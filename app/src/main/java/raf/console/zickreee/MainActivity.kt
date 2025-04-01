@@ -16,13 +16,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import dagger.hilt.android.AndroidEntryPoint
 import raf.console.zickreee.domain.models.BookmarkManager
 import raf.console.zickreee.presentation.screens.dalailhairat.Part8Screen
 import raf.console.zickreee.presentation.screens.about_app.AboutScreen
+import raf.console.zickreee.presentation.screens.counter.CounterDetailScreen
 import raf.console.zickreee.presentation.screens.dua.AfterNamazScreen
 import raf.console.zickreee.presentation.screens.dua.DuaForReachnessScreen
 import raf.console.zickreee.presentation.screens.dua.DuaIftitahSunnaScreen
@@ -673,9 +676,25 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 }, bookmarkManager)
         }
 
+        //
         composable("counter") {
-            CounterListScreen(counterViewModel)
+            CounterListScreen(counterViewModel, navController)
         }
+
+        composable(
+            "counterDetail/{counterId}",
+            arguments = listOf(navArgument("counterId") { type = NavType.LongType }
+            )) { backStackEntry ->
+                var counterId = backStackEntry.arguments?.getLong("counterId") ?: 0L
+                CounterDetailScreen(
+                    counterId = counterId,
+                    viewModel = hiltViewModel(),
+                    onBack = {
+                        navController.navigate("home") // Переход на главный экран
+                    }
+                )
+            }
+
 
         composable("dalailAlKhairat") {
             DalailHomeScreen(navController = navController)

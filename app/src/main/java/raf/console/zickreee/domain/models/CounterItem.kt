@@ -9,7 +9,7 @@ import java.io.Serializable
 @Entity(tableName = "counters")
 data class CounterItem(
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    var id: Long = 0,
 
     @ColumnInfo(name = "title")
     var title: String = "",
@@ -45,7 +45,7 @@ data class CounterItem(
     )
 
     @Ignore
-    constructor(id: Int, title: String, target: Int, progress: Int) : this(
+    constructor(id: Long, title: String, target: Int, progress: Int) : this(
         id,
         title,
         target,
@@ -55,7 +55,7 @@ data class CounterItem(
     )
 
     @Ignore
-    constructor(id: Int, title: String, target: Int, progress: Int, counterType: CounterType) : this(
+    constructor(id: Long, title: String, target: Int, progress: Int, counterType: CounterType) : this(
         id,
         title,
         target,

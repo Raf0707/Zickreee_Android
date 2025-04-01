@@ -55,7 +55,9 @@ class CounterViewModel @Inject constructor(
         deleteCounter(counter)
     }
 
-    suspend fun loadCounter(id: Long) {
-        _currentCounter.value = getCounterById(id)
+    suspend fun loadCounterById(id: Long) {
+        viewModelScope.launch {
+            _currentCounter.value = getCounterById(id)
+        }
     }
 }

@@ -31,13 +31,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import raf.console.zickreee.domain.models.CounterItemScreen
 import raf.console.zickreee.domain.models.CounterItem
 import raf.console.zickreee.presentation.viewmodel.CounterViewModel
 
 @Composable
 fun CounterListScreen(
-    viewModel: CounterViewModel
+    viewModel: CounterViewModel,
+    navController: NavController
 ) {
     val counters by viewModel.counters.collectAsState(emptyList())
     var showDialog by remember { mutableStateOf(false) }
@@ -97,8 +99,7 @@ fun CounterListScreen(
                     CounterItemScreen(
                         counter = counter,
                         onItemClick = {
-                            // Здесь можно добавить навигацию на экран деталей
-                            // или оставить как есть, если функционал не нужен
+                            navController.navigate("counterDetail/${counter.id}")
                         },
                         onEditClick = { showAddOrEditDialog(it) },
                         onDeleteClick = { viewModel.delete(it) }
