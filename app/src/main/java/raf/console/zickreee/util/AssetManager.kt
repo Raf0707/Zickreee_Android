@@ -3,9 +3,7 @@ package raf.console.zickreee.util
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import raf.console.zickreee.data.BmNumDua
-import raf.console.zickreee.data.Dua
-import raf.console.zickreee.data.EveryDayDua
+import raf.console.zickreee.domain.models.Dua
 
 fun loadDuasFromAssets(context: Context, fileName: String): List<Dua> {
     val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }

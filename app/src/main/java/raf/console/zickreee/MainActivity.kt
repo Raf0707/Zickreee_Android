@@ -14,57 +14,63 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import raf.console.zickreee.data.BookmarkManager
-import raf.console.zickreee.screens.AboutScreen
-import raf.console.zickreee.screens.AfterNamazScreen
-import raf.console.zickreee.screens.DuaForReachnessScreen
-import raf.console.zickreee.screens.DuaIftitahSunnaScreen
-import raf.console.zickreee.screens.DuaIsmulAzamScreen
-import raf.console.zickreee.screens.DuaProtectScreen
-import raf.console.zickreee.screens.DuaQuranScreen
-import raf.console.zickreee.screens.DuaRasulScreen
-import raf.console.zickreee.screens.DuaSeyfAsSagirScreen
-import raf.console.zickreee.screens.EveryDayScreen
-import raf.console.zickreee.screens.HirzScreen
-import raf.console.zickreee.screens.HomeScreen
-import raf.console.zickreee.screens.IstigfarScreen
-import raf.console.zickreee.screens.MorningAndEveningAzkarsScreen
-import raf.console.zickreee.screens.NamesScreen
-import raf.console.zickreee.screens.RukiaScreen
-import raf.console.zickreee.screens.SalavatScreen
-import raf.console.zickreee.screens.SavesScreen
-import raf.console.zickreee.screens.SettingsScreen
-import raf.console.zickreee.screens.TajnamaScreen
-import raf.console.zickreee.screens.WelcomeScreen
-import raf.console.zickreee.screens.dalailhairat.AsmaUlHusnaScreen
-import raf.console.zickreee.screens.dalailhairat.AsmaUnNabiSAWScreen
-import raf.console.zickreee.screens.dalailhairat.DalailHomeScreen
-import raf.console.zickreee.screens.dalailhairat.DuaFatihScreen
-import raf.console.zickreee.screens.dalailhairat.DuaHatmScreen
-import raf.console.zickreee.screens.dalailhairat.DuaIstigfarScreen
-import raf.console.zickreee.screens.dalailhairat.DuaNiyatScreen
-import raf.console.zickreee.screens.dalailhairat.DuaTaufickScreen
-import raf.console.zickreee.screens.dalailhairat.HowToReadScreen
-import raf.console.zickreee.screens.dalailhairat.ImportantDuaScreen
-import raf.console.zickreee.screens.dalailhairat.Part1Screen
-import raf.console.zickreee.screens.dalailhairat.Part2Screen
-import raf.console.zickreee.screens.dalailhairat.Part3Screen
-import raf.console.zickreee.screens.dalailhairat.Part4Screen
-import raf.console.zickreee.screens.dalailhairat.Part5Screen
-import raf.console.zickreee.screens.dalailhairat.Part6Screen
-import raf.console.zickreee.screens.dalailhairat.Part7Screen
-import raf.console.zickreee.screens.dalailhairat.Part8Screen
+import dagger.hilt.android.AndroidEntryPoint
+import raf.console.zickreee.domain.models.BookmarkManager
+import raf.console.zickreee.presentation.screens.dalailhairat.Part8Screen
+import raf.console.zickreee.presentation.screens.about_app.AboutScreen
+import raf.console.zickreee.presentation.screens.dua.AfterNamazScreen
+import raf.console.zickreee.presentation.screens.dua.DuaForReachnessScreen
+import raf.console.zickreee.presentation.screens.dua.DuaIftitahSunnaScreen
+import raf.console.zickreee.presentation.screens.dua.DuaIsmulAzamScreen
+import raf.console.zickreee.presentation.screens.dua.DuaProtectScreen
+import raf.console.zickreee.presentation.screens.dua.DuaQuranScreen
+import raf.console.zickreee.presentation.screens.dua.DuaRasulScreen
+import raf.console.zickreee.presentation.screens.dua.DuaSeyfAsSagirScreen
+import raf.console.zickreee.presentation.screens.dua.EveryDayScreen
+import raf.console.zickreee.presentation.screens.dua.HirzScreen
+import raf.console.zickreee.presentation.screens.home.HomeScreen
+import raf.console.zickreee.presentation.screens.dua.IstigfarScreen
+import raf.console.zickreee.presentation.screens.dua.MorningAndEveningAzkarsScreen
+import raf.console.zickreee.presentation.screens.dua.NamesScreen
+import raf.console.zickreee.presentation.screens.dua.RukiaScreen
+import raf.console.zickreee.presentation.screens.dua.SalavatScreen
+import raf.console.zickreee.presentation.screens.dua.SavesScreen
+import raf.console.zickreee.presentation.screens.settings.SettingsScreen
+import raf.console.zickreee.presentation.screens.dua.TajnamaScreen
+import raf.console.zickreee.presentation.screens.welcome.WelcomeScreen
+import raf.console.zickreee.presentation.screens.counter.CounterListScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.AsmaUlHusnaScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.AsmaUnNabiSAWScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.DalailHomeScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.DuaFatihScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.DuaHatmScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.DuaIstigfarScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.DuaNiyatScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.DuaTaufickScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.HowToReadScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.ImportantDuaScreen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part1Screen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part2Screen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part3Screen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part4Screen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part5Screen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part6Screen
+import raf.console.zickreee.presentation.screens.dalailhairat.Part7Screen
+
 import raf.console.zickreee.ui.theme.AppTheme
 import raf.console.zickreee.util.AppPreferences
 import raf.console.zickreee.util.ThemeOption
-import raf.console.zickreee.viewmodel.AppViewModel
-import raf.console.zickreee.viewmodel.AppViewModelFactory
+import raf.console.zickreee.presentation.viewmodel.AppViewModel
+import raf.console.zickreee.presentation.viewmodel.AppViewModelFactory
+import raf.console.zickreee.presentation.viewmodel.CounterViewModel
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,11 +114,14 @@ fun AppNavigation(appViewModel: AppViewModel) {
     val navController = rememberNavController()
     val context = LocalContext.current
     val appPreferences = remember { AppPreferences(context) }
+    val counterViewModel: CounterViewModel = hiltViewModel()
 
     // Проверяем, первый ли это запуск
     val isFirstLaunch = appPreferences.isFirstLaunch()
 
     val bookmarkManager = BookmarkManager(LocalContext.current)
+
+    //navController.graph = rememberNavController().graph
 
     NavHost(
         navController = navController,
@@ -662,6 +671,10 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
                 }, bookmarkManager)
+        }
+
+        composable("counter") {
+            CounterListScreen(counterViewModel)
         }
 
         composable("dalailAlKhairat") {
