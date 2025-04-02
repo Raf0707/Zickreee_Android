@@ -9,15 +9,26 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.SystemUpdate
 import androidx.compose.material.icons.outlined.ColorLens
+import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.FontDownload
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.NightsStay
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.WbSunny
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,15 +37,22 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
 
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -49,34 +67,104 @@ import raf.console.zickreee.presentation.viewmodel.AppViewModelFactory
 @Composable
 fun SettingsScreen(
     onBackClick: () -> Unit,
-    onHomeClick: () -> Unit, // Колбэк для нажатия на кнопку "На главную"
+    onHomeClick: () -> Unit,
     appViewModel: AppViewModel = viewModel(factory = AppViewModelFactory(LocalContext.current))
 ) {
     val context = LocalContext.current
-
-    // Подписываемся на состояния из ViewModel
     val theme by appViewModel.theme.collectAsState()
     val dynamicColor by appViewModel.dynamicColor.collectAsState()
     val contrastTheme by appViewModel.contrastTheme.collectAsState()
-
     val showArabic by appViewModel.showArabic.collectAsState()
     val showTranscription by appViewModel.showTranscription.collectAsState()
     val showTranslation by appViewModel.showTranslation.collectAsState()
     val showInfo by appViewModel.showInfo.collectAsState()
-
     val arabicTextSize by appViewModel.arabicTextSize.collectAsState()
     val transcriptionTextSize by appViewModel.transcriptionTextSize.collectAsState()
     val translationTextSize by appViewModel.translationTextSize.collectAsState()
 
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
+    var showArabicSizeDialog by remember { mutableStateOf(false) }
+    var showTranscriptionSizeDialog by remember { mutableStateOf(false) }
+    var showTranslationSizeDialog by remember { mutableStateOf(false) }
+    var tempTextSize by remember { mutableStateOf("") }
+
+    // Диалог для ввода размера текста
+    @Composable
+    fun showTextSizeDialog(currentSize: Float, onConfirm: (Float) -> Unit) {
+        tempTextSize = currentSize.toInt().toString()
+        AlertDialog(
+            onDismissRequest = {
+                when {
+                    showArabicSizeDialog -> showArabicSizeDialog = false
+                    showTranscriptionSizeDialog -> showTranscriptionSizeDialog = false
+                    showTranslationSizeDialog -> showTranslationSizeDialog = false
+                }
+            },
+            title = { Text("Enter text size") },
+            text = {
+                TextField(
+                    value = tempTextSize,
+                    onValueChange = {
+                        if (it.matches(Regex("^\\d{1,2}\$")) || it.isEmpty()) {
+                            tempTextSize = it
+                        }
+                    },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Number
+                    ),
+                    label = { Text("Size (12-70)") }
+                )
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        val size = tempTextSize.toIntOrNull()?.toFloat() ?: currentSize
+                        when {
+                            showArabicSizeDialog -> {
+                                if (size in 12f..70f) {
+                                    onConfirm(size)
+                                    showArabicSizeDialog = false
+                                }
+                            }
+                            showTranscriptionSizeDialog -> {
+                                if (size in 12f..54f) {
+                                    onConfirm(size)
+                                    showTranscriptionSizeDialog = false
+                                }
+                            }
+                            showTranslationSizeDialog -> {
+                                if (size in 12f..54f) {
+                                    onConfirm(size)
+                                    showTranslationSizeDialog = false
+                                }
+                            }
+                        }
+                    }
+                ) {
+                    Text("OK")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        when {
+                            showArabicSizeDialog -> showArabicSizeDialog = false
+                            showTranscriptionSizeDialog -> showTranscriptionSizeDialog = false
+                            showTranslationSizeDialog -> showTranslationSizeDialog = false
+                        }
+                    }
+                ) {
+                    Text("Cancel")
+                }
+            }
+        )
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 16.dp)
         ) {
-            // Верхний блок с кнопкой "Назад" и заголовком
             item {
                 Row(
                     modifier = Modifier
@@ -85,10 +173,7 @@ fun SettingsScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = onBackClick) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back"
-                        )
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                     Text(
                         text = stringResource(R.string.settings),
@@ -99,18 +184,15 @@ fun SettingsScreen(
             }
 
             item {
-                // Общие настройки
                 Text(
                     text = "General Settings",
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 8.dp, bottom = 4.dp),
+                    modifier = Modifier.padding(start = 16.dp, top = 8.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
                 )
             }
 
             item {
-                // Опция динамических цветов
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -129,19 +211,15 @@ fun SettingsScreen(
                     }
                     Switch(
                         checked = dynamicColor,
-                        onCheckedChange = { newValue ->
-                            appViewModel.updateDynamicColor(newValue)
-                        }
+                        onCheckedChange = { appViewModel.updateDynamicColor(it) }
                     )
                 }
             }
 
             item {
-                // Настройки темы
                 Text(
                     text = "Theme Settings",
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
+                    modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
                 )
@@ -149,36 +227,32 @@ fun SettingsScreen(
 
             item {
                 ThemeOptionItem(
+                    icon = Icons.Default.SystemUpdate,
                     title = "System Default",
                     selected = theme == ThemeOption.SystemDefault,
-                    onClick = {
-                        appViewModel.updateTheme(ThemeOption.SystemDefault)
-                    }
+                    onClick = { appViewModel.updateTheme(ThemeOption.SystemDefault) }
                 )
             }
 
             item {
                 ThemeOptionItem(
+                    icon = Icons.Outlined.WbSunny,
                     title = "Light Theme",
                     selected = theme == ThemeOption.Light,
-                    onClick = {
-                        appViewModel.updateTheme(ThemeOption.Light)
-                    }
+                    onClick = { appViewModel.updateTheme(ThemeOption.Light) }
                 )
             }
 
             item {
                 ThemeOptionItem(
+                    icon = Icons.Outlined.DarkMode,
                     title = "Dark Theme",
                     selected = theme == ThemeOption.Dark,
-                    onClick = {
-                        appViewModel.updateTheme(ThemeOption.Dark)
-                    }
+                    onClick = { appViewModel.updateTheme(ThemeOption.Dark) }
                 )
             }
 
             item {
-                // Опция контрастной темы
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -192,9 +266,7 @@ fun SettingsScreen(
                     }
                     Switch(
                         checked = contrastTheme == ContrastLevel.High,
-                        onCheckedChange = { newValue ->
-                            appViewModel.updateContrastTheme(if (newValue) ContrastLevel.High else ContrastLevel.Default)
-                        }
+                        onCheckedChange = { appViewModel.updateContrastTheme(if (it) ContrastLevel.High else ContrastLevel.Default) }
                     )
                 }
             }
@@ -257,7 +329,7 @@ fun SettingsScreen(
                         checked = showTranslation,
                         onCheckedChange = {
                             appViewModel.updateShowTranslation(it)
-                            if (!it) appViewModel.updateShowInfo(false) // Автоматически скрываем info
+                            if (!it) appViewModel.updateShowInfo(false)
                         }
                     )
                     Text(
@@ -276,13 +348,11 @@ fun SettingsScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
-                        checked = showInfo && showTranslation, // Зависит от перевода
+                        checked = showInfo && showTranslation,
                         onCheckedChange = {
-                            if (showTranslation) { // Можно изменить только если включен перевод
-                                appViewModel.updateShowInfo(it)
-                            }
+                            if (showTranslation) appViewModel.updateShowInfo(it)
                         },
-                        enabled = showTranslation // Блокируем если перевод выключен
+                        enabled = showTranslation
                     )
                     Text(
                         text = "Show additional info",
@@ -297,19 +367,19 @@ fun SettingsScreen(
             item {
                 Text(
                     text = "Text Size Settings",
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
+                    modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
                 )
             }
 
-            // Слайдер для арабского текста
+            // Арабский текст
             item {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp)
+                        .clickable { showArabicSizeDialog = true }
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -319,9 +389,9 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Arabic Text Size",
-                            style = MaterialTheme.typography.bodyLarge
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.weight(1f)
                         )
-                        Spacer(modifier = Modifier.weight(1f))
                         Text(
                             text = "${arabicTextSize.toInt()}sp",
                             style = MaterialTheme.typography.bodyMedium,
@@ -331,19 +401,20 @@ fun SettingsScreen(
                     Slider(
                         value = arabicTextSize,
                         onValueChange = { appViewModel.updateArabicTextSize(it) },
-                        valueRange = 12f..30f,
-                        steps = 8,
+                        valueRange = 12f..70f,
+                        steps = 58,
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
             }
 
-            // Слайдер для транскрипции
+            // Транскрипция
             item {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp)
+                        .clickable { showTranscriptionSizeDialog = true }
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -353,9 +424,9 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Transcription Size",
-                            style = MaterialTheme.typography.bodyLarge
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.weight(1f)
                         )
-                        Spacer(modifier = Modifier.weight(1f))
                         Text(
                             text = "${transcriptionTextSize.toInt()}sp",
                             style = MaterialTheme.typography.bodyMedium,
@@ -365,19 +436,20 @@ fun SettingsScreen(
                     Slider(
                         value = transcriptionTextSize,
                         onValueChange = { appViewModel.updateTranscriptionTextSize(it) },
-                        valueRange = 12f..24f,
-                        steps = 6,
+                        valueRange = 12f..54f,
+                        steps = 42,
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
             }
 
-            // Слайдер для перевода и информации
+            // Перевод
             item {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp)
+                        .clickable { showTranslationSizeDialog = true }
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -387,9 +459,9 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Translation & Info Size",
-                            style = MaterialTheme.typography.bodyLarge
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.weight(1f)
                         )
-                        Spacer(modifier = Modifier.weight(1f))
                         Text(
                             text = "${translationTextSize.toInt()}sp",
                             style = MaterialTheme.typography.bodyMedium,
@@ -399,60 +471,84 @@ fun SettingsScreen(
                     Slider(
                         value = translationTextSize,
                         onValueChange = { appViewModel.updateTranslationTextSize(it) },
-                        valueRange = 12f..24f,
-                        steps = 6,
+                        valueRange = 12f..54f,
+                        steps = 42,
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
             }
-
         }
 
-        // Кнопка "На главную" в правом верхнем углу
         IconButton(
-            onClick = onHomeClick, // Обработчик нажатия
+            onClick = onHomeClick,
             modifier = Modifier
-                .align(Alignment.TopEnd) // Выравнивание в верхний правый угол
-                .padding(32.dp) // Отступ от краев
+                .align(Alignment.TopEnd)
+                .padding(32.dp)
                 .background(
                     color = MaterialTheme.colorScheme.surface,
                     shape = CircleShape
                 )
         ) {
             Icon(
-                imageVector = Icons.Default.Home, // Иконка "Дом"
+                imageVector = Icons.Default.Home,
                 contentDescription = "На главную",
                 tint = MaterialTheme.colorScheme.primary
             )
         }
+
+        // Диалоги для ввода размера текста
+        if (showArabicSizeDialog) {
+            showTextSizeDialog(arabicTextSize) { size ->
+                appViewModel.updateArabicTextSize(size)
+            }
+        }
+        if (showTranscriptionSizeDialog) {
+            showTextSizeDialog(transcriptionTextSize) { size ->
+                appViewModel.updateTranscriptionTextSize(size)
+            }
+        }
+        if (showTranslationSizeDialog) {
+            showTextSizeDialog(translationTextSize) { size ->
+                appViewModel.updateTranslationTextSize(size)
+            }
+        }
     }
 }
 
-
 @Composable
-fun ThemeOptionItem(title: String, selected: Boolean, onClick: () -> Unit) {
+fun ThemeOptionItem(
+    icon: ImageVector,
+    title: String,
+    selected: Boolean,
+    onClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
-            .padding(horizontal = 4.dp, vertical = 12.dp),
+            .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        RadioButton(
-            selected = selected,
-            onClick = onClick
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+            tint = if (selected) MaterialTheme.colorScheme.primary
+            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
         )
-        Spacer(modifier = Modifier.width(8.dp))
-        Column {
-            Text(text = title, style = MaterialTheme.typography.bodyLarge)
-            Text(
-                text = when (title) {
-                    "System Default" -> "Use system default theme"
-                    "Light Theme" -> "Use light theme"
-                    else -> "Use night theme"
-                },
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color.Gray
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyLarge,
+            color = if (selected) MaterialTheme.colorScheme.primary
+            else MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.weight(1f)
+        )
+        if (selected) {
+            Icon(
+                imageVector = Icons.Default.Check,
+                contentDescription = "Selected",
+                tint = MaterialTheme.colorScheme.primary
             )
         }
     }

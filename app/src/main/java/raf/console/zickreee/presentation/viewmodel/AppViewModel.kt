@@ -38,14 +38,14 @@ class AppViewModel(private val settingsManager: SettingsManager) : ViewModel() {
     val showInfo: StateFlow<Boolean> = _showInfo.asStateFlow()
 
     // Состояния для размеров текста
-    private val _arabicTextSize = MutableStateFlow(18f) // начальное значение
-    val arabicTextSize: StateFlow<Float> = _arabicTextSize
+    private val _arabicTextSize = MutableStateFlow(settingsManager.arabicTextSize) // начальное значение
+    val arabicTextSize: StateFlow<Float> = _arabicTextSize.asStateFlow()
 
-    private val _transcriptionTextSize = MutableStateFlow(16f)
-    val transcriptionTextSize: StateFlow<Float> = _transcriptionTextSize
+    private val _transcriptionTextSize = MutableStateFlow(settingsManager.transcriptionTextSize)
+    val transcriptionTextSize: StateFlow<Float> = _transcriptionTextSize.asStateFlow()
 
-    private val _translationTextSize = MutableStateFlow(16f)
-    val translationTextSize: StateFlow<Float> = _translationTextSize
+    private val _translationTextSize = MutableStateFlow(settingsManager.translationTextSize)
+    val translationTextSize: StateFlow<Float> = _translationTextSize.asStateFlow()
 
 
     // Функции для обновления состояний
@@ -93,13 +93,16 @@ class AppViewModel(private val settingsManager: SettingsManager) : ViewModel() {
     // Методы для обновления размеров
     fun updateArabicTextSize(size: Float) {
         _arabicTextSize.value = size
+        settingsManager.arabicTextSize = size // Сохраняем в SharedPreferences
     }
 
     fun updateTranscriptionTextSize(size: Float) {
         _transcriptionTextSize.value = size
+        settingsManager.transcriptionTextSize = size // Сохраняем в SharedPreferences
     }
 
     fun updateTranslationTextSize(size: Float) {
         _translationTextSize.value = size
+        settingsManager.translationTextSize = size // Сохраняем в SharedPreferences
     }
 }

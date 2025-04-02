@@ -45,6 +45,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -160,17 +161,19 @@ fun DuaItem(
                 "${translationTextSize.takeUnless { it == 16f } ?: "default16"}"
     }
 ) {
-
-    buildString {
-        append("dua_${arabicDua.hashCode()}_")
-        append(if (arabicTextSize == 18f) "defaultArab" else arabicTextSize)
-        append("_")
-        append(if (transcriptionTextSize == 16f) "defaultTrans" else transcriptionTextSize)
-        append("_")
-        append(if (translationTextSize == 16f) "defaultTrans" else translationTextSize)
+    // Функция для расчета динамических отступов
+    @Composable
+    fun calculateSpacing(textSize: Float): Dp {
+        return when {
+            textSize < 16 -> 8.dp
+            textSize < 24 -> 12.dp
+            textSize < 32 -> 16.dp
+            textSize < 48 -> 24.dp
+            else -> 32.dp
+        }
     }
 
-    // Определяем видимые элементы в правильном порядке
+    // Определяем видимые элементы
     val visibleFields = buildList {
         if (showArabic && arabicDua.isNotBlank()) add(Field.ARABIC to arabicDua)
         if (showTranscription && transcript.isNotBlank()) add(Field.TRANSCRIPT to transcript)
@@ -178,9 +181,8 @@ fun DuaItem(
         if (showInfo && additionalInfo?.isNotBlank() == true) add(Field.INFO to additionalInfo)
     }
 
-    // Стрелка показывается только если есть что раскрывать (более 1 элемента)
     val showArrow = visibleFields.size > 1
-    val showDescription = remember { mutableStateOf(!showArrow) } // Если один элемент - сразу раскрыт
+    val showDescription = remember { mutableStateOf(!showArrow) }
 
     val context = LocalContext.current
     val bookmarks by bookmarkManager.getBookmarksFlow().collectAsState(initial = emptyList())
@@ -188,7 +190,6 @@ fun DuaItem(
         derivedStateOf { bookmarks.any { it.arabicDua == arabicDua } }
     }
 
-    // Анимации
     val animatedArrowRotation = animateFloatAsState(
         targetValue = if (showDescription.value) 0f else -180f,
         animationSpec = tween(durationMillis = 600, easing = LinearOutSlowInEasing)
@@ -201,7 +202,6 @@ fun DuaItem(
     )
 
     val shapes = MaterialTheme.shapes
-
     val shape = remember(position, shapes) {
         when (position) {
             Position.TOP -> shapes.extraLarge.copy(
@@ -223,9 +223,7 @@ fun DuaItem(
             .clickable(enabled = showArrow) { showDescription.value = !showDescription.value }
             .padding(16.dp)
     ) {
-        // Верхняя часть с кнопками и первым видимым полем
         Column(modifier = Modifier.fillMaxWidth()) {
-            // Ряд кнопок
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -233,7 +231,6 @@ fun DuaItem(
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Кнопка закладки
                 IconButton(
                     onClick = {
                         if (isBookmarked) {
@@ -259,7 +256,6 @@ fun DuaItem(
                     )
                 }
 
-                // Кнопка копирования
                 IconButton(
                     onClick = {
                         val textToCopy = buildString {
@@ -282,7 +278,6 @@ fun DuaItem(
                     )
                 }
 
-                // Кнопка поделиться
                 IconButton(
                     onClick = {
                         val textToShare = buildString {
@@ -308,9 +303,15 @@ fun DuaItem(
                 }
             }
 
-            // Первое видимое поле
             visibleFields.firstOrNull()?.let { (fieldType, text) ->
-                Spacer(modifier = Modifier.height(12.dp))
+                val spacing = calculateSpacing(
+                    when (fieldType) {
+                        Field.ARABIC -> arabicTextSize
+                        Field.TRANSCRIPT -> transcriptionTextSize
+                        else -> translationTextSize
+                    }
+                )
+                Spacer(modifier = Modifier.height(spacing))
                 Text(
                     text = text,
                     color = when (fieldType) {
@@ -320,15 +321,18 @@ fun DuaItem(
                     style = when (fieldType) {
                         Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center,
-                            fontSize = arabicTextSize.sp
+                            fontSize = arabicTextSize.sp,
+                            lineHeight = (arabicTextSize * 1.8).sp
                         )
                         Field.TRANSCRIPT -> MaterialTheme.typography.bodyMedium.copy(
                             textAlign = TextAlign.Center,
-                            fontSize = transcriptionTextSize.sp
+                            fontSize = transcriptionTextSize.sp,
+                            lineHeight = (transcriptionTextSize * 1.5).sp
                         )
                         else -> MaterialTheme.typography.bodyMedium.copy(
                             textAlign = TextAlign.Center,
-                            fontSize = translationTextSize.sp
+                            fontSize = translationTextSize.sp,
+                            lineHeight = (translationTextSize * 1.5).sp
                         )
                     },
                     modifier = Modifier.fillMaxWidth()
@@ -336,18 +340,33 @@ fun DuaItem(
             }
         }
 
-        // Раскрывающаяся часть (остальные поля)
         if (visibleFields.size > 1) {
             ExpandingTransition(
                 visible = showDescription.value,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(Modifier.fillMaxWidth()) {
-                    Spacer(modifier = Modifier.height(12.dp))
+                    val firstFieldType = visibleFields.first().first
+                    val initialSpacing = calculateSpacing(
+                        when (firstFieldType) {
+                            Field.ARABIC -> arabicTextSize
+                            Field.TRANSCRIPT -> transcriptionTextSize
+                            else -> translationTextSize
+                        }
+                    )
+
+                    Spacer(modifier = Modifier.height(initialSpacing))
                     HorizontalDivider()
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(initialSpacing))
 
                     visibleFields.drop(1).forEach { (fieldType, text) ->
+                        val spacing = calculateSpacing(
+                            when (fieldType) {
+                                Field.ARABIC -> arabicTextSize
+                                Field.TRANSCRIPT -> transcriptionTextSize
+                                else -> translationTextSize
+                            }
+                        )
                         Text(
                             text = text,
                             color = when (fieldType) {
@@ -357,26 +376,28 @@ fun DuaItem(
                             style = when (fieldType) {
                                 Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(
                                     textAlign = TextAlign.Center,
-                                    fontSize = arabicTextSize.sp
+                                    fontSize = arabicTextSize.sp,
+                                    lineHeight = (arabicTextSize * 1.8).sp
                                 )
                                 Field.TRANSCRIPT -> MaterialTheme.typography.bodyMedium.copy(
                                     textAlign = TextAlign.Center,
-                                    fontSize = transcriptionTextSize.sp
+                                    fontSize = transcriptionTextSize.sp,
+                                    lineHeight = (transcriptionTextSize * 1.5).sp
                                 )
                                 else -> MaterialTheme.typography.bodyMedium.copy(
                                     textAlign = TextAlign.Center,
-                                    fontSize = translationTextSize.sp
+                                    fontSize = translationTextSize.sp,
+                                    lineHeight = (translationTextSize * 1.5).sp
                                 )
                             },
                             modifier = Modifier.fillMaxWidth()
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(spacing))
                     }
                 }
             }
         }
 
-        // Стрелка (только если есть что раскрывать)
         if (showArrow) {
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowUp,
