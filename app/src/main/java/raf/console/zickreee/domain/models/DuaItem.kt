@@ -46,13 +46,17 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import raf.console.zickreee.components.ExpandingTransition
 import raf.console.zickreee.components.Field
 import raf.console.zickreee.components.Position
+import raf.console.zickreee.presentation.viewmodel.AppViewModel
 import raf.console.zickreee.util.rememberDuaDisplaySettings
 import java.io.File
 
@@ -145,8 +149,27 @@ fun DuaItem(
     showArabic: Boolean = rememberDuaDisplaySettings().showArabic,
     showTranscription: Boolean = rememberDuaDisplaySettings().showTranscription,
     showTranslation: Boolean = rememberDuaDisplaySettings().showTranslation,
-    showInfo: Boolean = rememberDuaDisplaySettings().showInfo
+    showInfo: Boolean = rememberDuaDisplaySettings().showInfo,
+    arabicTextSize: Float = rememberDuaDisplaySettings().arabicTextSize,
+    transcriptionTextSize: Float = rememberDuaDisplaySettings().transcriptionTextSize,
+    translationTextSize: Float = rememberDuaDisplaySettings().translationTextSize,
+    key: String = remember(arabicDua, arabicTextSize, transcriptionTextSize) {
+        "dua_${arabicDua.hashCode()}_" +
+                "${arabicTextSize.takeUnless { it == 18f } ?: "default18"}_" +
+                "${transcriptionTextSize.takeUnless { it == 16f } ?: "default16"}_" +
+                "${translationTextSize.takeUnless { it == 16f } ?: "default16"}"
+    }
 ) {
+
+    buildString {
+        append("dua_${arabicDua.hashCode()}_")
+        append(if (arabicTextSize == 18f) "defaultArab" else arabicTextSize)
+        append("_")
+        append(if (transcriptionTextSize == 16f) "defaultTrans" else transcriptionTextSize)
+        append("_")
+        append(if (translationTextSize == 16f) "defaultTrans" else translationTextSize)
+    }
+
     // Определяем видимые элементы в правильном порядке
     val visibleFields = buildList {
         if (showArabic && arabicDua.isNotBlank()) add(Field.ARABIC to arabicDua)
@@ -295,8 +318,18 @@ fun DuaItem(
                         else -> MaterialTheme.colorScheme.onSurfaceVariant
                     },
                     style = when (fieldType) {
-                        Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
-                        else -> MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center)
+                        Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = arabicTextSize.sp
+                        )
+                        Field.TRANSCRIPT -> MaterialTheme.typography.bodyMedium.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = transcriptionTextSize.sp
+                        )
+                        else -> MaterialTheme.typography.bodyMedium.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = translationTextSize.sp
+                        )
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -322,8 +355,18 @@ fun DuaItem(
                                 else -> MaterialTheme.colorScheme.onSurfaceVariant
                             },
                             style = when (fieldType) {
-                                Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
-                                else -> MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center)
+                                Field.ARABIC -> MaterialTheme.typography.titleLarge.copy(
+                                    textAlign = TextAlign.Center,
+                                    fontSize = arabicTextSize.sp
+                                )
+                                Field.TRANSCRIPT -> MaterialTheme.typography.bodyMedium.copy(
+                                    textAlign = TextAlign.Center,
+                                    fontSize = transcriptionTextSize.sp
+                                )
+                                else -> MaterialTheme.typography.bodyMedium.copy(
+                                    textAlign = TextAlign.Center,
+                                    fontSize = translationTextSize.sp
+                                )
                             },
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -347,21 +390,3 @@ fun DuaItem(
         }
     }
 }
-// 4. Пример использования в родительском компоненте:
-/*@Composable
-fun DuaListScreen() {
-    val context = LocalContext.current
-    val bookmarkManager = remember { BookmarkManager(context) }
-
-    LazyColumn {
-        items(duas) { dua ->
-            DuaItem(
-                arabicDua = dua.arabic,
-                transcript = dua.transcript,
-                translate = dua.translate,
-                position = Position.CENTER,
-                bookmarkManager = bookmarkManager
-            )
-        }
-    }
-}*/

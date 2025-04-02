@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.ColorLens
+import androidx.compose.material.icons.outlined.FontDownload
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
@@ -24,6 +25,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Slider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -61,6 +63,10 @@ fun SettingsScreen(
     val showTranscription by appViewModel.showTranscription.collectAsState()
     val showTranslation by appViewModel.showTranslation.collectAsState()
     val showInfo by appViewModel.showInfo.collectAsState()
+
+    val arabicTextSize by appViewModel.arabicTextSize.collectAsState()
+    val transcriptionTextSize by appViewModel.transcriptionTextSize.collectAsState()
+    val translationTextSize by appViewModel.translationTextSize.collectAsState()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -287,6 +293,119 @@ fun SettingsScreen(
                     )
                 }
             }
+
+            item {
+                Text(
+                    text = "Text Size Settings",
+                    modifier = Modifier
+                        .padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.Gray
+                )
+            }
+
+            // Слайдер для арабского текста
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(Icons.Outlined.FontDownload, contentDescription = null)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Arabic Text Size",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Text(
+                            text = "${arabicTextSize.toInt()}sp",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Gray
+                        )
+                    }
+                    Slider(
+                        value = arabicTextSize,
+                        onValueChange = { appViewModel.updateArabicTextSize(it) },
+                        valueRange = 12f..30f,
+                        steps = 8,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
+            }
+
+            // Слайдер для транскрипции
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(Icons.Outlined.FontDownload, contentDescription = null)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Transcription Size",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Text(
+                            text = "${transcriptionTextSize.toInt()}sp",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Gray
+                        )
+                    }
+                    Slider(
+                        value = transcriptionTextSize,
+                        onValueChange = { appViewModel.updateTranscriptionTextSize(it) },
+                        valueRange = 12f..24f,
+                        steps = 6,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
+            }
+
+            // Слайдер для перевода и информации
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(Icons.Outlined.FontDownload, contentDescription = null)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Translation & Info Size",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Text(
+                            text = "${translationTextSize.toInt()}sp",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Gray
+                        )
+                    }
+                    Slider(
+                        value = translationTextSize,
+                        onValueChange = { appViewModel.updateTranslationTextSize(it) },
+                        valueRange = 12f..24f,
+                        steps = 6,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
+            }
+
         }
 
         // Кнопка "На главную" в правом верхнем углу
