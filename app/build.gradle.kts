@@ -72,6 +72,15 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
+    //Vk-RuStore
+    implementation("com.my.target:mytarget-sdk:5.20.0")
+
+    //implementation("ru.rustore.sdk:appupdate:7.0.0")
+
+    implementation(platform("ru.rustore.sdk:bom:7.0.0"))
+    implementation("ru.rustore.sdk:appupdate")
+    implementation("ru.rustore.sdk:review")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

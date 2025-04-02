@@ -24,22 +24,23 @@ import androidx.compose.ui.unit.dp
 import raf.console.zickreee.domain.models.NameItem
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.domain.models.BookmarkManager
+import raf.console.zickreee.domain.models.DuaItem
 import raf.console.zickreee.domain.models.Name
 
 @Composable
 fun NamesScreen(
-    arabicNames: List<String>,
-    transcriptNames: List<String>,
-    translateNames: List<String>,
-    infoNames: List<String>,
+    arabicDuas: List<String>,
+    transcripts: List<String>,
+    translates: List<String>,
+    additionalInfos: List<String>,
     onHomeClick: () -> Unit,
     bookmarkManager: BookmarkManager
 ) {
     // Объединяем 4 списка в один список объектов Name
-    val names = arabicNames
-        .zip(transcriptNames) { arabic, transcript -> Pair(arabic, transcript) }
-        .zip(translateNames) { (arabic, transcript), translate -> Triple(arabic, transcript, translate) }
-        .zip(infoNames) { (arabic, transcript, translate), info ->
+    val names = arabicDuas
+        .zip(transcripts) { arabic, transcript -> Pair(arabic, transcript) }
+        .zip(translates) { (arabic, transcript), translate -> Triple(arabic, transcript, translate) }
+        .zip(additionalInfos) { (arabic, transcript, translate), info ->
             Name(
                 arabic_name = arabic,
                 transcript_name = transcript,
@@ -70,11 +71,11 @@ fun NamesScreen(
                 )
             }
             items(names.size) { index ->
-                NameItem(
-                    arabicName = names[index].arabic_name,
-                    transcriptName = names[index].transcript_name,
-                    translateName = names[index].translate_name,
-                    infoName = names[index].info_name,
+                DuaItem(
+                    arabicDua = names[index].arabic_name,
+                    transcript = names[index].transcript_name,
+                    translate = names[index].translate_name,
+                    additionalInfo = names[index].info_name,
                     position = when (index) {
                         0 -> Position.TOP
                         names.size - 1 -> Position.BOTTOM
