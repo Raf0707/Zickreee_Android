@@ -48,6 +48,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import raf.console.zickreee.components.ExpandingTransition
 import raf.console.zickreee.components.Position
+import raf.console.zickreee.util.BookmarkManager
 
 @Composable
 fun NameItem(

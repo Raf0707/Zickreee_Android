@@ -37,6 +37,6 @@
     <string name="back">На главную</string>
     <string name="back_msg">Перейти на главную страницу</string>
     <string name="continue_button">Продолжить</string>
-    <string name="welcome_license_message">Мы используем лицензию GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007, поэтому не забывайте указывать автора и ссылку на репозиторий при использовании наашего кода</string>
+    <string name="welcome_license_message">Мы используем лицензию GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007, поэтому не забывайте указывать автора и ссылку на репозиторий при использовании нашего кода</string>
     <string name="privacy_policy_ru">Политика конфиденциальности</string>
 </resources>

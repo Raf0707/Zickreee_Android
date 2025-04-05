@@ -65,6 +65,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.launch
 import raf.console.zickreee.domain.models.CounterItem
 import raf.console.zickreee.presentation.viewmodel.CounterViewModel
+import raf.console.zickreee.util.VKBannerAd
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -538,6 +539,10 @@ fun CounterDetailScreen(
                 ) {
                     Text("Сбросить")
                 }
+
+                Spacer(modifier = Modifier.height(8.dp))
+                VKBannerAd(1806016)
+
             }
         }
     }

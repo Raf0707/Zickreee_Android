@@ -40,6 +40,8 @@ import raf.console.archnotes.utils.ChromeCustomTabUtil
 import raf.console.archnotes.utils.FeedbackHelper
 import raf.console.zickreee.R
 import raf.console.zickreee.util.ChromeUtilNoTranslate
+import raf.console.zickreee.util.VKBannerAd
+import raf.console.zickreee.util.loadAndShowInterstitialAd
 
 
 @Composable
@@ -151,6 +153,10 @@ fun AboutScreen(
                                 context = context,
                                 url = "https://www.rustore.ru/catalog/developer/90b1826e",
                             )
+
+                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                            val clip = ClipData.newPlainText("Ссылка на другие приложения скопирована", "https://www.rustore.ru/catalog/developer/90b1826e")
+                            clipboard.setPrimaryClip(clip)
                         }
                     )
                     HorizontalDivider(Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp))
@@ -253,7 +259,7 @@ fun AboutScreen(
                     HorizontalDivider(Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp))
                     ListItem(
                         title = "Версия",
-                        subtitle = "1.0.0",
+                        subtitle = "2.0.0",
                         icon = painterResource(id = R.drawable.update_24px)
                     )
                 }
@@ -377,6 +383,57 @@ fun AboutScreen(
 
         item {
             Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        /*item {
+            ElevatedCard(shape = ShapeDefaults.Large) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth().padding(start = 16.dp, end = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.boost),
+                        contentDescription = "Boost Icon",
+                        modifier = Modifier.size(128.dp)
+                    )
+                    Text(
+                        text = "Помочь разработчику",
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                        modifier = Modifier.padding(bottom = 8.dp, start = 32.dp, end = 32.dp),
+                        textAlign = TextAlign.Center
+                    )
+
+                    Text(
+                        text = "Вы поможете нам продвинуть наше приложение в топ, если будете чаще смотреть рекламу. Разработчик решил не делать много рекламы, поэтому вы можете посмотреть ее, нажав на кнопку просмотра внизу",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(bottom = 8.dp, start = 32.dp, end = 32.dp),
+                        textAlign = TextAlign.Center
+                    )
+
+                    ListItem(
+                        title = "Посмотреть рекламу",
+                        subtitle = "и помочь нам в продвижении",
+                        icon = painterResource(id = R.drawable.boost),
+                        onClick = {
+                            loadAndShowInterstitialAd(context, 1806217)
+                            navController.navigate("admob")
+                        }
+                    )
+                    HorizontalDivider(Modifier.padding(16.dp, 0.dp, 16.dp, 32.dp))
+
+                }
+            }
+        }*/
+
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        item {
+            VKBannerAd(1806019)
         }
 
     }

@@ -28,6 +28,7 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import kotlinx.coroutines.launch
+import raf.console.zickreee.util.VKBannerAd
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,6 +43,7 @@ fun HomeScreen(navController: NavController) {
         DrawerItem("Счетчик", Icons.Default.Refresh, "counter"),
         DrawerItem("Сохраненки", Icons.Default.Bookmark, "saves"),
         DrawerItem("Настройки", Icons.Default.Settings, "settings"),
+        //DrawerItem("Убрать рекламу", Icons.Default.ShoppingCart, "shops"),
         DrawerItem("О приложении", Icons.Default.Info, "aboutApp")
     )
 
@@ -74,6 +76,7 @@ fun HomeScreen(navController: NavController) {
         ) { paddingValues ->
             // Остальной код остается без изменений
             val items = listOf(
+                //"Добро пожаловать!" to "welcome",
                 "99 имен Аллаха" to "namesOfAllah",
                 "Дуа из Корана" to "duaFromQuran",
                 "Салаваты" to "salawat",
@@ -87,9 +90,6 @@ fun HomeScreen(navController: NavController) {
                 "Дуа для защиты и безопасности" to "duaProtect",
                 "Рукъя - лечение аятами Корана" to "rukia",
                 "Дуа и зикры на каждый день" to "everyDay",
-                "Дуа Ифтитах (Сунна)" to "duaIftitahSunna",
-                "Дуа Сайф ас-Сагир" to "duaSeyfSagir",
-                "Дуа Таджнама" to "duaTajnama",
                 "Даляиль Аль-Хайрат" to "dalailAlKhairat",
                 "Счетчик" to "counter",
                 "Сохраненки" to "saves",
@@ -103,6 +103,9 @@ fun HomeScreen(navController: NavController) {
                     .padding(paddingValues)
                     .padding(horizontal = 16.dp, vertical = 16.dp)
             ) {
+                item {
+                    VKBannerAd(1806004)
+                }
                 items(items.size) { index ->
                     val (title, route) = items[index]
                     StaticItem(
@@ -117,6 +120,10 @@ fun HomeScreen(navController: NavController) {
                         }
                     )
                     Spacer(modifier = Modifier.height(8.dp))
+                }
+                item {
+                    VKBannerAd(1804474)
+                    VKBannerAd(1806106)
                 }
             }
         }

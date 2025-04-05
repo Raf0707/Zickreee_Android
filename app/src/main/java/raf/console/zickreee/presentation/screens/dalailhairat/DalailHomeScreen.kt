@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.domain.models.StaticItem
+import raf.console.zickreee.util.VKBannerAd
 
 @Composable
 fun DalailHomeScreen(navController: NavController) {
@@ -40,6 +41,9 @@ fun DalailHomeScreen(navController: NavController) {
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 64.dp)
     ) {
+        item {
+            VKBannerAd(1806109)
+        }
         items(items.size) { index ->
             val (title, route) = items[index]
             StaticItem(
@@ -54,6 +58,9 @@ fun DalailHomeScreen(navController: NavController) {
                 }
             )
             Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
+        }
+        item {
+            VKBannerAd(1806112)
         }
     }
 }

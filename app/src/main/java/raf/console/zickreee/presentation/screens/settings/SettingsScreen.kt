@@ -62,6 +62,7 @@ import raf.console.zickreee.ui.theme.ContrastLevel
 import raf.console.zickreee.util.ThemeOption
 import raf.console.zickreee.presentation.viewmodel.AppViewModel
 import raf.console.zickreee.presentation.viewmodel.AppViewModelFactory
+import raf.console.zickreee.util.VKBannerAd
 
 
 @Composable
@@ -99,7 +100,7 @@ fun SettingsScreen(
                     showTranslationSizeDialog -> showTranslationSizeDialog = false
                 }
             },
-            title = { Text("Enter text size") },
+            title = { Text("Введите размер текста") },
             text = {
                 TextField(
                     value = tempTextSize,
@@ -111,7 +112,7 @@ fun SettingsScreen(
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Number
                     ),
-                    label = { Text("Size (12-70)") }
+                    label = { Text("Введите число от 12 до 70 для арабского текста и от 12 до 54 для транскрипции, перевода и доп. информации") }
                 )
             },
             confirmButton = {
@@ -153,7 +154,7 @@ fun SettingsScreen(
                         }
                     }
                 ) {
-                    Text("Cancel")
+                    Text("Отмена")
                 }
             }
         )
@@ -184,8 +185,12 @@ fun SettingsScreen(
             }
 
             item {
+                VKBannerAd(1806100)
+            }
+
+            item {
                 Text(
-                    text = "General Settings",
+                    text = "Общие настройки",
                     modifier = Modifier.padding(start = 16.dp, top = 8.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
@@ -202,9 +207,9 @@ fun SettingsScreen(
                     Icon(Icons.Outlined.Info, contentDescription = null)
                     Spacer(modifier = Modifier.width(8.dp))
                     Column(modifier = Modifier.weight(1f)) {
-                        Text(text = "Dynamic Colors", fontSize = 18.sp)
+                        Text(text = "Динамические цвета", fontSize = 18.sp)
                         Text(
-                            text = if (dynamicColor) "Dynamic colors are currently enabled." else "Dynamic colors are currently disabled.",
+                            text = if (dynamicColor) "Динамические цвета включены" else "Динамические цвета выключены",
                             style = MaterialTheme.typography.bodyMedium,
                             color = Color.Gray
                         )
@@ -218,7 +223,7 @@ fun SettingsScreen(
 
             item {
                 Text(
-                    text = "Theme Settings",
+                    text = "Настройки темы",
                     modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
@@ -228,7 +233,7 @@ fun SettingsScreen(
             item {
                 ThemeOptionItem(
                     icon = Icons.Default.SystemUpdate,
-                    title = "System Default",
+                    title = "Системная тема",
                     selected = theme == ThemeOption.SystemDefault,
                     onClick = { appViewModel.updateTheme(ThemeOption.SystemDefault) }
                 )
@@ -237,7 +242,7 @@ fun SettingsScreen(
             item {
                 ThemeOptionItem(
                     icon = Icons.Outlined.WbSunny,
-                    title = "Light Theme",
+                    title = "Светлая тема",
                     selected = theme == ThemeOption.Light,
                     onClick = { appViewModel.updateTheme(ThemeOption.Light) }
                 )
@@ -246,7 +251,7 @@ fun SettingsScreen(
             item {
                 ThemeOptionItem(
                     icon = Icons.Outlined.DarkMode,
-                    title = "Dark Theme",
+                    title = "Темная тема",
                     selected = theme == ThemeOption.Dark,
                     onClick = { appViewModel.updateTheme(ThemeOption.Dark) }
                 )
@@ -262,7 +267,12 @@ fun SettingsScreen(
                     Icon(Icons.Outlined.ColorLens, contentDescription = null)
                     Spacer(modifier = Modifier.width(8.dp))
                     Column(modifier = Modifier.weight(1f)) {
-                        Text(text = "High Contrast Theme", fontSize = 18.sp)
+                        Text(text = "Контрастный режим", fontSize = 18.sp)
+                        Text(
+                            text = if (contrastTheme == ContrastLevel.High) "Контрастный режим включен" else "Контрастный режим выключен",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Gray
+                        )
                     }
                     Switch(
                         checked = contrastTheme == ContrastLevel.High,
@@ -273,7 +283,7 @@ fun SettingsScreen(
 
             item {
                 Text(
-                    text = "Text Display Settings",
+                    text = "Настройки отображения текста",
                     modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
@@ -292,7 +302,7 @@ fun SettingsScreen(
                         onCheckedChange = { appViewModel.updateShowArabic(it) }
                     )
                     Text(
-                        text = "Show Arabic text",
+                        text = "Показывать арабский текст",
                         modifier = Modifier.padding(start = 16.dp),
                         style = MaterialTheme.typography.bodyLarge
                     )
@@ -311,7 +321,7 @@ fun SettingsScreen(
                         onCheckedChange = { appViewModel.updateShowTranscription(it) }
                     )
                     Text(
-                        text = "Show transcription",
+                        text = "Показывать транскрипцию",
                         modifier = Modifier.padding(start = 16.dp),
                         style = MaterialTheme.typography.bodyLarge
                     )
@@ -333,7 +343,7 @@ fun SettingsScreen(
                         }
                     )
                     Text(
-                        text = "Show translation",
+                        text = "Показывать информацию",
                         modifier = Modifier.padding(start = 16.dp),
                         style = MaterialTheme.typography.bodyLarge
                     )
@@ -355,7 +365,7 @@ fun SettingsScreen(
                         enabled = showTranslation
                     )
                     Text(
-                        text = "Show additional info",
+                        text = "Показывать доп. информацию (в разделе 99 имен Аллаха)",
                         modifier = Modifier.padding(start = 16.dp),
                         style = MaterialTheme.typography.bodyLarge,
                         color = if (showTranslation) MaterialTheme.colorScheme.onSurface
@@ -366,7 +376,7 @@ fun SettingsScreen(
 
             item {
                 Text(
-                    text = "Text Size Settings",
+                    text = "Размер текста",
                     modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp),
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.Gray
@@ -388,7 +398,7 @@ fun SettingsScreen(
                         Icon(Icons.Outlined.FontDownload, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Arabic Text Size",
+                            text = "Арабский текст",
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier.weight(1f)
                         )
@@ -423,7 +433,7 @@ fun SettingsScreen(
                         Icon(Icons.Outlined.FontDownload, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Transcription Size",
+                            text = "Транскрипция",
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier.weight(1f)
                         )
@@ -458,7 +468,7 @@ fun SettingsScreen(
                         Icon(Icons.Outlined.FontDownload, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Translation & Info Size",
+                            text = "Перевод и доп. информация",
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier.weight(1f)
                         )
@@ -476,6 +486,10 @@ fun SettingsScreen(
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
+            }
+
+            item {
+                VKBannerAd(1806103)
             }
         }
 

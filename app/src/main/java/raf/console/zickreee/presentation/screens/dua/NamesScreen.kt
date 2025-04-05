@@ -23,9 +23,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import raf.console.zickreee.domain.models.NameItem
 import raf.console.zickreee.components.Position
-import raf.console.zickreee.domain.models.BookmarkManager
+import raf.console.zickreee.util.BookmarkManager
 import raf.console.zickreee.domain.models.DuaItem
 import raf.console.zickreee.domain.models.Name
+import raf.console.zickreee.util.VKBannerAd
 
 @Composable
 fun NamesScreen(
@@ -70,6 +71,11 @@ fun NamesScreen(
                         .padding(top = 48.dp, bottom = 32.dp) // Отступ сверху и снизу
                 )
             }
+
+            item {
+                VKBannerAd(1806082)
+            }
+
             items(names.size) { index ->
                 DuaItem(
                     arabicDua = names[index].arabic_name,
@@ -84,6 +90,10 @@ fun NamesScreen(
                     bookmarkManager = bookmarkManager
                 )
                 Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
+            }
+
+            item {
+                VKBannerAd(1806085)
             }
         }
 

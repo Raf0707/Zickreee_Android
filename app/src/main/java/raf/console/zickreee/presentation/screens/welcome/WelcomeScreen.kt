@@ -40,7 +40,7 @@ import raf.console.archnotes.utils.ChromeCustomTabUtil
 import raf.console.zickreee.R
 import java.io.IOException
 
-@Composable
+/*@Composable
 fun WelcomeScreen(
     onStartClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -249,4 +249,4 @@ fun readFileFromAssets(context: Context, fileName: String): String {
         e.printStackTrace()
         ""
     }
-}
+}*/

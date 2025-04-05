@@ -26,7 +26,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import raf.console.zickreee.domain.models.DuaItem
 import raf.console.zickreee.components.Position
-import raf.console.zickreee.domain.models.BookmarkManager
+import raf.console.zickreee.util.BookmarkManager
+import raf.console.zickreee.util.VKBannerAd
 import raf.console.zickreee.util.loadDuasFromAssets
 
 @Composable
@@ -60,6 +61,10 @@ fun DuaIsmulAzamScreen(
                 )
             }
 
+            item {
+                VKBannerAd(1806034)
+            }
+
             // Список карточек
             items(duas) { dua ->
                 DuaItem(
@@ -72,6 +77,10 @@ fun DuaIsmulAzamScreen(
                     bookmarkManager = bookmarkManager
                 )
                 Spacer(modifier = Modifier.height(8.dp)) // Отступ между карточками
+            }
+
+            item {
+                VKBannerAd(1806037)
             }
         }
 

@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import raf.console.zickreee.util.VKBannerAd
 
 @Composable
 fun HowToReadScreen() {
@@ -35,6 +36,10 @@ fun HowToReadScreen() {
                 .padding(horizontal = 16.dp)
         ) {
             item {
+                VKBannerAd(1806157)
+                Spacer(modifier = Modifier.height(8.dp))
+            }
+            item {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -48,7 +53,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 1 (Понедельник)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -90,7 +95,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 2 (Вторник)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -126,7 +131,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 3 (Среда)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -162,7 +167,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 4 (Четверг)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -198,7 +203,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 5 (Пятница)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -234,7 +239,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 6 (Суббота)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -270,7 +275,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 7 (Воскресенье)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -306,7 +311,7 @@ fun HowToReadScreen() {
                         Text(
                             text = "День 8 / День 1 (Понедельник)",
                             style = MaterialTheme.typography.titleLarge.copy(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -333,6 +338,10 @@ fun HowToReadScreen() {
 
                     }
                 }
+            }
+
+            item {
+                VKBannerAd(1806160)
             }
         }
     }

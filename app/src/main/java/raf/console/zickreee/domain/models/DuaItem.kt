@@ -58,84 +58,12 @@ import raf.console.zickreee.components.ExpandingTransition
 import raf.console.zickreee.components.Field
 import raf.console.zickreee.components.Position
 import raf.console.zickreee.presentation.viewmodel.AppViewModel
+import raf.console.zickreee.util.BookmarkManager
+import raf.console.zickreee.util.SubscriptionManager
 import raf.console.zickreee.util.rememberDuaDisplaySettings
 import java.io.File
 
-// 1. Сначала создадим модель данных для закладок в новом файле data/Bookmark.kt
-data class Bookmark(
-    val day: String? = null,
-    val arabicDua: String,
-    val transcript: String,
-    val translate: String,
-    val additionalInfo: String? = null,
-    val timestamp: Long = System.currentTimeMillis()
-)
 
-// 2. Создадим класс для работы с файлом bookmarks.json в utils/BookmarkManager.kt
-class BookmarkManager(private val context: Context) {
-    private val bookmarksFile = "bookmarks.json"
-    private val gson = Gson()
-    private val bookmarksFlow = MutableStateFlow<List<Bookmark>>(emptyList())
-
-    init {
-        loadBookmarks()
-    }
-
-    private fun loadBookmarks() {
-        try {
-            val file = File(context.filesDir, bookmarksFile)
-            if (file.exists()) {
-                val jsonString = file.readText()
-                val bookmarks = gson.fromJson<List<Bookmark>>(
-                    jsonString,
-                    object : TypeToken<List<Bookmark>>() {}.type
-                ) ?: emptyList()
-                bookmarksFlow.value = bookmarks
-            }
-        } catch (e: Exception) {
-            Log.e("BookmarkManager", "Error loading bookmarks", e)
-        }
-    }
-
-    fun getBookmarksFlow(): Flow<List<Bookmark>> = bookmarksFlow
-
-    fun getAllBookmarks(): List<Bookmark> {
-        return try {
-            val jsonString = context.assets.open(bookmarksFile).bufferedReader().use { it.readText() }
-            gson.fromJson(jsonString, object : TypeToken<List<Bookmark>>() {}.type) ?: emptyList()
-        } catch (e: Exception) {
-            emptyList()
-        }
-    }
-
-    private fun saveBookmarks(bookmarks: List<Bookmark>) {
-        try {
-            val jsonString = gson.toJson(bookmarks)
-            File(context.filesDir, bookmarksFile).writeText(jsonString)
-            bookmarksFlow.value = bookmarks
-        } catch (e: Exception) {
-            Log.e("BookmarkManager", "Error saving bookmarks", e)
-        }
-    }
-
-    fun addBookmark(bookmark: Bookmark) {
-        val current = bookmarksFlow.value.toMutableList()
-        if (!current.any { it.arabicDua == bookmark.arabicDua }) {
-            current.add(bookmark)
-            saveBookmarks(current)
-        }
-    }
-
-    fun removeBookmark(arabicDua: String) {
-        val current = bookmarksFlow.value.toMutableList()
-        current.removeAll { it.arabicDua == arabicDua }
-        saveBookmarks(current)
-    }
-
-    fun isBookmarked(arabicDua: String): Boolean {
-        return bookmarksFlow.value.any { it.arabicDua == arabicDua }
-    }
-}
 
 // 3. Обновленный DuaItem с кнопкой закладки
 @Composable
@@ -154,6 +82,7 @@ fun DuaItem(
     arabicTextSize: Float = rememberDuaDisplaySettings().arabicTextSize,
     transcriptionTextSize: Float = rememberDuaDisplaySettings().transcriptionTextSize,
     translationTextSize: Float = rememberDuaDisplaySettings().translationTextSize,
+    subscriptionManager: SubscriptionManager? = null,
     key: String = remember(arabicDua, arabicTextSize, transcriptionTextSize) {
         "dua_${arabicDua.hashCode()}_" +
                 "${arabicTextSize.takeUnless { it == 18f } ?: "default18"}_" +
@@ -161,7 +90,10 @@ fun DuaItem(
                 "${translationTextSize.takeUnless { it == 16f } ?: "default16"}"
     }
 ) {
+
+    //subscriptionManager = remember { SubscriptionManager(LocalContext.current) }
     // Функция для расчета динамических отступов
+
     @Composable
     fun calculateSpacing(textSize: Float): Dp {
         return when {

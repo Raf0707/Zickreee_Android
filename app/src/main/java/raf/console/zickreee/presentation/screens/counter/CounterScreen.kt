@@ -39,6 +39,7 @@ import androidx.navigation.NavController
 import raf.console.zickreee.domain.models.CounterItemScreen
 import raf.console.zickreee.domain.models.CounterItem
 import raf.console.zickreee.presentation.viewmodel.CounterViewModel
+import raf.console.zickreee.util.VKBannerAd
 
 @Composable
 fun CounterListScreen(
@@ -121,6 +122,9 @@ fun CounterListScreen(
                     .fillMaxSize()
                     .padding(padding)
             ) {
+                item {
+                    VKBannerAd(1806007)
+                }
                 items(counters) { counter ->
                     CounterItemScreen(
                         counter = counter,

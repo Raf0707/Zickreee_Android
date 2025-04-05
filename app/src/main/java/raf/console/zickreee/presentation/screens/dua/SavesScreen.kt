@@ -31,7 +31,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import raf.console.zickreee.domain.models.BookmarkManager
+import raf.console.zickreee.util.BookmarkManager
+import raf.console.zickreee.util.VKBannerAd
 
 @Composable
 fun SavesScreen(
@@ -62,6 +63,9 @@ fun SavesScreen(
                         .padding(paddingValues)
                         .padding(horizontal = 16.dp)
                 ) {
+                    item {
+                        VKBannerAd(1806010)
+                    }
                     items(bookmarks) { bookmark ->
                         Card(
                             modifier = Modifier
@@ -124,6 +128,9 @@ fun SavesScreen(
                                 }
                             }
                         }
+                    }
+                    item {
+                        VKBannerAd(1806013)
                     }
                 }
             }

@@ -1,5 +1,5 @@
 package raf.console.zickreee.util
-/*
+
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -30,7 +30,7 @@ import raf.console.zickreee.R
 
 /**
  * Баннер 320Х50
- * 1804474
+ * VKBannerAd(1804474)
  */
 @Composable
 fun VKBannerAd(slotId: Int) {
@@ -226,4 +226,4 @@ fun InterstitialAdTextButton(
     ) {
         Text(text = "Нет")
     }
-}*/
+}

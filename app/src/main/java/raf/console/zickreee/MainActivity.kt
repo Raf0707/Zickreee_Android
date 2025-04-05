@@ -24,18 +24,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import dagger.hilt.android.AndroidEntryPoint
-import raf.console.zickreee.domain.models.BookmarkManager
 import raf.console.zickreee.presentation.screens.dalailhairat.Part8Screen
 import raf.console.zickreee.presentation.screens.about_app.AboutScreen
 import raf.console.zickreee.presentation.screens.counter.CounterDetailScreen
 import raf.console.zickreee.presentation.screens.dua.AfterNamazScreen
 import raf.console.zickreee.presentation.screens.dua.DuaForReachnessScreen
-import raf.console.zickreee.presentation.screens.dua.DuaIftitahSunnaScreen
 import raf.console.zickreee.presentation.screens.dua.DuaIsmulAzamScreen
 import raf.console.zickreee.presentation.screens.dua.DuaProtectScreen
 import raf.console.zickreee.presentation.screens.dua.DuaQuranScreen
 import raf.console.zickreee.presentation.screens.dua.DuaRasulScreen
-import raf.console.zickreee.presentation.screens.dua.DuaSeyfAsSagirScreen
 import raf.console.zickreee.presentation.screens.dua.EveryDayScreen
 import raf.console.zickreee.presentation.screens.dua.HirzScreen
 import raf.console.zickreee.presentation.screens.home.HomeScreen
@@ -46,8 +43,7 @@ import raf.console.zickreee.presentation.screens.dua.RukiaScreen
 import raf.console.zickreee.presentation.screens.dua.SalavatScreen
 import raf.console.zickreee.presentation.screens.dua.SavesScreen
 import raf.console.zickreee.presentation.screens.settings.SettingsScreen
-import raf.console.zickreee.presentation.screens.dua.TajnamaScreen
-import raf.console.zickreee.presentation.screens.welcome.WelcomeScreen
+import raf.console.zickreee.presentation.screens.welcome.WelcomeScreenStart
 import raf.console.zickreee.presentation.screens.counter.CounterListScreen
 import raf.console.zickreee.presentation.screens.dalailhairat.AsmaUlHusnaScreen
 import raf.console.zickreee.presentation.screens.dalailhairat.AsmaUnNabiSAWScreen
@@ -66,6 +62,7 @@ import raf.console.zickreee.presentation.screens.dalailhairat.Part4Screen
 import raf.console.zickreee.presentation.screens.dalailhairat.Part5Screen
 import raf.console.zickreee.presentation.screens.dalailhairat.Part6Screen
 import raf.console.zickreee.presentation.screens.dalailhairat.Part7Screen
+import raf.console.zickreee.presentation.screens.welcome.WelcomeScreenStart
 
 import raf.console.zickreee.ui.theme.AppTheme
 import raf.console.zickreee.util.AppPreferences
@@ -73,6 +70,8 @@ import raf.console.zickreee.util.ThemeOption
 import raf.console.zickreee.presentation.viewmodel.AppViewModel
 import raf.console.zickreee.presentation.viewmodel.AppViewModelFactory
 import raf.console.zickreee.presentation.viewmodel.CounterViewModel
+import raf.console.zickreee.util.BookmarkManager
+import raf.console.zickreee.util.loadAndShowInterstitialAd
 
 
 @AndroidEntryPoint
@@ -135,7 +134,7 @@ fun AppNavigation(appViewModel: AppViewModel) {
         startDestination = if (isFirstLaunch) "welcome" else "home"
     ) {
         composable("welcome") {
-            WelcomeScreen(
+            WelcomeScreenStart(
                 onStartClick = {
                     // Устанавливаем флаг, что первый запуск завершен
                     appPreferences.setFirstLaunchCompleted()
@@ -652,27 +651,6 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 }, bookmarkManager)
         }
 
-        composable("duaIftitahSunna") {
-            DuaIftitahSunnaScreen(LocalContext.current,
-                onHomeClick = {
-                    navController.navigate("home") // Переход на главный экран
-                }, bookmarkManager)
-        }
-
-        composable("duaSeyfSagir") {
-            DuaSeyfAsSagirScreen(LocalContext.current,
-                onHomeClick = {
-                    navController.navigate("home") // Переход на главный экран
-                }, bookmarkManager)
-        }
-
-        composable("duaTajnama") {
-            TajnamaScreen(LocalContext.current,
-                onHomeClick = {
-                    navController.navigate("home") // Переход на главный экран
-                }, bookmarkManager)
-        }
-
         composable("saves") {
             SavesScreen(LocalContext.current,
                 onHomeClick = {
@@ -710,6 +688,8 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 onHomeClick = {
                     navController.navigate("home") // Переход на главный экран
                 })
+
+            loadAndShowInterstitialAd(context, 1806217)
         }
         composable("aboutApp") {
             AboutScreen(navController)
@@ -836,6 +816,14 @@ fun AppNavigation(appViewModel: AppViewModel) {
                 onHomeClick = {
                     navController.navigate("dalailAlKhairat") // Переход на главный экран
                 }, bookmarkManager)
+        }
+
+        composable("welcome") {
+            WelcomeScreenStart(
+                onStartClick = {
+                    navController.navigate("home") // Переход на главный экран
+                }
+            )
         }
 
     }
